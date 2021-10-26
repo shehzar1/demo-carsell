@@ -24,6 +24,10 @@
   background-color:#a6c9e1;
 }
 
+.field_width{
+  width: 240px;
+}
+
 .section{
   background-color: white;
   margin: 0px 390px 1px 390px;
