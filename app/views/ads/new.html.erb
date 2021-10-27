@@ -1,2 +1,6 @@
-<h1>Ads#new</h1>
-<p>Find me in app/views/ads/new.html.erb</p>
+<h3>Create an ad</h3>
+<%= form_with model: @ad do |form| %>
+  <%= form.text_field :city, placeholder: "city" %>
+  <%= form.text_field :milage, placeholder: "milage" %>
+  <%= form.submit %>
+<% end %>

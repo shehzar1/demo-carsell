@@ -1,2 +1,5 @@
-<h1>Ads#index</h1>
-<p>Find me in app/views/ads/index.html.erb</p>
+<ul>
+  <% @ads.each do |ad| %>
+    <li><%= link_to ad.city, ad_path(ad)  %></li>
+  <% end %>
+</ul>
