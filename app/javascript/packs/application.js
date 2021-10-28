@@ -12,6 +12,14 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+
 //=require jquery3
 //=require popper
 //=require bootstrap
+
+javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"

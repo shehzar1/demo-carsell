@@ -1,5 +1,74 @@
-<ul>
-  <% @ads.each do |ad| %>
-    <li><%= link_to ad.city, ad_path(ad)  %></li>
-  <% end %>
-</ul>
+<div class="container-fluid">
+  <%= form_with url: "/search", method: :get do |form| %>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-4">
+            <%= form.label :query, "City:" %>
+              <%= form.select :city, ["Lahore", "Karachi", "Islamabad", "Peshawar", "Quetta", "Rawalpindi"] %>
+          </div>
+          <div class="col-lg-5">
+        <%= form.label :query, "Color:" %>
+          <%= form.select :color, ["Black", "White", "Other"] %>
+        </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-5">
+        <%= form.label :query, "Transmission Type:" %>
+          <%= form.select :tranmission_type, ["Automatic", "Manual"] %>
+</div>
+          <div class="col-lg-7">
+            <%= form.label :query, "Engine Capacity:" %>
+              <%= form.text_field :engine_capacity, size: "0.1x1" %>
+            </div></div></div>
+      </div>
+
+    <br>
+    <div class="row">
+      <div class="col-lg-6">
+
+        <div class="row">
+          <div class="col-lg-4">
+        <%= form.label :query, "Car Make:" %>
+          <%= form.select :car_make, ["Suzuki", "Toyota", "Honda", "BMW"] %>
+        </div>
+
+          <div class="col-lg-7">
+            <%= form.label :query, "Assembly Type:" %>
+              <%= form.select :color, ["Local", "Imported"] %>
+            </div>
+          </div>
+      </div>
+      <div class="col-lg-6">
+
+        <div class="row">
+
+          <div class="col-lg-5">
+            <%= form.label :query, "Milage:" %>
+              <%= form.text_field :milage, size: "0.1x1" %>
+          </div>
+
+          <div class="col-lg-6">
+            <%= form.label :query, "Price:" %>
+              <%= form.text_field :price, size: "0.1x1" %>
+            </div>
+
+          </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-6">
+        <%= form.label :query, "Engine Type:" %>
+          <%= form.select :engine_type, ["Petrol", "Diesel", "Hybrid"] %>
+      </div>
+      <div class="col-lg-6">
+        <%= form.label :query, "Description:" %>
+          <%= form.text_field :message, size: "55x1" %>
+      </div>
+    </div>
+
+    <% end %>
+</div>

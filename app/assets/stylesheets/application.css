@@ -28,3 +28,17 @@
   width: 240px;
 }
 
+
+.caret{
+  color: solid darkgrey;
+  width: 10%;
+}
+
+.filterbutton{
+  margin-top: 45px;
+}
+
+.btn-secondary{
+  color: #333333;
+  background-color: lightgray;
+}
