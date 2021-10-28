@@ -15,16 +15,16 @@
  */
 @import "bootstrap";
 
-.center_div{
-    margin: 0 auto;
-    width:20%; /* value of your choice which suits your alignment */
+.center_div {
+  margin: 0 auto;
+  width:20%;
 }
 
-.bg{
-  background-color:#a6c9e1;
+.bg {
+  background-color: #a6c9e1;
 }
 
-.field_width{
+.field_width {
   width: 240px;
 }
 
