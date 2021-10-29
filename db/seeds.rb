@@ -8,6 +8,5 @@
 Ad.create(city: 'Lahore', milage: '10', car_make: 'Honda', price: '2000000', engine_type: 'Petrol',
   transmission_type: 'Manual', engine_capacity: '1300', color: 'Black', assembly_type: 'Local', description: 'Bumper to Bumper genuine')
 
-
 Ad.create(city: 'Karachi', milage: '11', car_make: 'Honda', price: '2000000', engine_type: 'Petrol',
   transmission_type: 'Manual', engine_capacity: '1300', color: 'Black', assembly_type: 'Local', description: 'Bumper to Bumper genuine')

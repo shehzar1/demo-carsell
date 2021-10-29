@@ -1,50 +1,40 @@
-<% name = current_user.present? ? current_user.username : 'Stranger' %>
-<h3>Welcome, <%= name %> </h3>
-
 <div class="container">
-  <div class="">
   <div class="card">
-      <div class="card-body">
-         <div class="row">
-          <div class="col-sm-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Car Make
-            <span class="caret"></span></button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Car Make <span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li><a href="#">HTML</a></li>
               <li><a href="#">CSS</a></li>
               <li><a href="#">JavaScript</a></li>
             </ul>
           </div>
-</div>
-      <div class="col-sm-4">
-        <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cities
-            <span class="caret"></span></button>
+        </div>
+        <div class="col-sm-4">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cities <span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><a href="#">HTML</a></li>
               <li><a href="#">CSS</a></li>
               <li><a href="#">JavaScript</a></li>
             </ul>
-          </div></div>
-
+          </div>
+        </div>
         <div class="col-sm-4">
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Price Range
-            <span class="caret"></span></button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Price Range <span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li><a href="#">HTML</a></li>
               <li><a href="#">CSS</a></li>
               <li><a href="#">JavaScript</a></li>
             </ul>
           </div>
-           <button class="btn btn-secondary filterbutton" type="button">Search</button>
-           <button class="btn btn-secondary filterbutton" type="button">Clear Filters</button>
-        </div>
-
-
-          </div>
+          <button class="btn btn-secondary filterbutton" type="button">Search</button>
+          <button class="btn btn-secondary filterbutton" type="button">Clear Filters</button>
         </div>
       </div>
+    </div>
   </div>
 </div>
