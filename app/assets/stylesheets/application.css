@@ -13,32 +13,3 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
-
-.center_div {
-  margin: 0 auto;
-  width: 20%;
-}
-
-.bg {
-  background-color: #a6c9e1;
-}
-
-.field_width {
-  width: 240px;
-}
-
-
-.caret{
-  color: solid darkgrey;
-  width: 10%;
-}
-
-.filterbutton{
-  margin-top: 45px;
-}
-
-.btn-secondary{
-  color: #333333;
-  background-color: lightgray;
-}

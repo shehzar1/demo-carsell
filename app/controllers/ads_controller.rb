@@ -14,9 +14,8 @@ class AdsController < ApplicationController
   end
 
   def create
-    ad = Ad.create(Ad_params)
-
-    redirect_to Ad_path(ad)
+    ad = Ad.create(ad_params)
+    redirect_to ad_path(ad)
   end
 
   def edit
@@ -24,14 +23,13 @@ class AdsController < ApplicationController
   end
 
   def update
-    @ad.update(Ad_params)
-
-    redirect_to Ad_path(@ad)
+    @ad.update(ad_params)
+    redirect_to ad_path(@ad)
   end
 
   def destroy
     @ad.destroy
-    redirect_to Ads_path
+    redirect_to ads_path
   end
 
   private
