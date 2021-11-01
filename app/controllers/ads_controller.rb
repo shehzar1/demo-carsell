@@ -5,7 +5,7 @@ class AdsController < ApplicationController
     @ads = Ad.all
   end
 
-  def show;end
+  def show; end
 
   def new
     @ad = Ad.new
@@ -16,7 +16,7 @@ class AdsController < ApplicationController
     redirect_to ad_path(ad)
   end
 
-  def edit;end
+  def edit; end
 
   def update
     @ad.update(ad_params)
