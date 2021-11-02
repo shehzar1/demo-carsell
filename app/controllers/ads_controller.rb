@@ -12,19 +12,31 @@ class AdsController < ApplicationController
   end
 
   def create
-    ad = Ad.create(ad_params)
-    redirect_to ad_path(ad)
+    @ad = Ad.create(ad_params)
+    if @ad.save
+      redirect_to @ad, notice: "Ad saved successfully."
+    else
+      render 'new', alert: @ad.errors.full_messages.to_sentence
+    end
   end
 
   def edit; end
 
   def update
-    @ad.update(ad_params)
-    redirect_to ad_path(@ad)
+    if @ad.update(ad_params)
+      redirect_to ad_path(@ad), notice: "Ad updated successfully."
+    else
+      render 'edit', alert: @ad.errors.full_messages.to_sentence
+    end
   end
 
   def destroy
-    @ad.destroy
+    if @ad.destroy
+      flash[:notice] = "Ad deleted successfully."
+    else
+      flash[:alert] = @ad.errors.full_messages.to_sentence
+    end
+
     redirect_to ads_path
   end
 
