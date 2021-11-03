@@ -1,10 +1,8 @@
 class Ad < ApplicationRecord
-
-  CITIES = ['Rawalpindi', 'Lahore', 'Quetta', 'Karachi', 'Peshawar', 'Islamabad' ]
-  MAKE = ['Suzuki', 'Toyota', 'Honda', 'BMW' ]
-  ENGINE = ['Petrol', 'Diesel', 'Hybrid' ]
-  TRANSMISSION = ['Automatic', 'Manual' ]
-  ASSEMBLY = ['Local', 'Imported']
-  COLOR = ['Black' ,'White']
-
+  CITIES = ['Rawalpindi', 'Lahore', 'Quetta', 'Karachi', 'Peshawar', 'Islamabad'].freeze
+  MAKE = ['Suzuki', 'Toyota', 'Honda', 'BMW'].freeze
+  ENGINE = ['Petrol', 'Diesel', 'Hybrid'].freeze
+  TRANSMISSION = ['Automatic', 'Manual'].freeze
+  ASSEMBLY = ['Local', 'Imported'].freeze
+  COLOR = ['Black' ,'White'].freeze
 end

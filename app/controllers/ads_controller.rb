@@ -16,7 +16,7 @@ class AdsController < ApplicationController
     if @ad.save
       redirect_to @ad, notice: "Ad saved successfully."
     else
-      render 'new', alert: @ad.errors.full_messages.to_sentence
+      render 'new'
     end
   end
 
@@ -24,9 +24,9 @@ class AdsController < ApplicationController
 
   def update
     if @ad.update(ad_params)
-      redirect_to ad_path(@ad), notice: "Ad updated successfully."
+      redirect_to @ad, notice: "Ad updated successfully."
     else
-      render 'edit', alert: @ad.errors.full_messages.to_sentence
+      render 'edit'
     end
   end
 

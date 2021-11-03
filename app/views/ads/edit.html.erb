@@ -1,3 +1,4 @@
+<%= render '/shared/flash_message' %>
 <div class="container">
   <div class="text-center">
     <button type="button" class="btn btn-success btn-lg">Update AD Details</button>
@@ -7,72 +8,72 @@
   <div class="card">
     <div class="card-body">
       <div class="container-fluid">
-        <%= form_for :ad do |form| %>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-lg-4">
-                <%= form.label :query, "City:" %>
-                <%= form.select :city, ADS::CITIES %>
+        <%= form_for(:ad, url: ad_path(@ad), html: {method: :put}) do |form| %>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-lg-4">
+                  <%= form.label :query, "City:" %>
+                  <%= form.select :city, Ad::CITIES %>
+                </div>
+                <div class="col-lg-5">
+                  <%= form.label :query, "Color:" %>
+                  <%= form.select :color, Ad::COLOR %>
+                </div>
               </div>
-              <div class="col-lg-5">
-                <%= form.label :query, "Color:" %>
-                <%= form.select :color, ADS::COLOR %>
+            </div>
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-lg-5">
+                  <%= form.label :query, "Transmission Type:" %>
+                  <%= form.select :transmission_type, Ad::TRANSMISSION %>
+                </div>
+                <div class="col-lg-7">
+                  <%= form.label :query, "Engine Capacity:" %>
+                  <%= form.text_field :engine_capacity, size: "0.1x1" %>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-lg-5">
-                <%= form.label :query, "Transmission Type:" %>
-                <%= form.select :transmission_type, ADS::TRANSMISSION %>
+          <br>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-lg-4">
+                  <%= form.label :query, "CarMake:" %>
+                  <%= form.select :car_make, Ad::MAKE %>
+                </div>
+                <div class="col-lg-8">
+                  <%= form.label :query, "Assembly Type:" %>
+                  <%= form.select :assembly_type, Ad::ASSEMBLY %>
+                </div>
               </div>
-              <div class="col-lg-7">
-                <%= form.label :query, "Engine Capacity:" %>
-                <%= form.text_field :engine_capacity, size: "0.1x1" %>
+            </div>
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-lg-5">
+                  <%= form.label :query, "Milage:" %>
+                  <%= form.text_field :milage, size: "0.1x1" %>
+                </div>
+                <div class="col-lg-6">
+                  <%= form.label :query, "Price:" %>
+                  <%= form.text_field :price, size: "0.1x1" %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-lg-4">
-                <%= form.label :query, "CarMake:" %>
-                <%= form.select :car_make, ADS::MAKE %>
-              </div>
-              <div class="col-lg-8">
-                <%= form.label :query, "Assembly Type:" %>
-                <%= form.select :assembly_type, ADS::ASSEMBLY %>
-              </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-6">
+              <%= form.label :query, "Engine Type:" %>
+              <%= form.select :engine_type, Ad::ENGINE %>
+            </div>
+            <div class="col-lg-6">
+              <%= form.label :query, "Description:" %>
+              <%= form.text_field :description, size: "43x1" %>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-lg-5">
-                <%= form.label :query, "Milage:" %>
-                <%= form.text_field :milage, size: "0.1x1" %>
-              </div>
-              <div class="col-lg-6">
-                <%= form.label :query, "Price:" %>
-                <%= form.text_field :price, size: "0.1x1" %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-lg-6">
-            <%= form.label :query, "Engine Type:" %>
-            <%= form.select :engine_type, ADS::ENGINE %>
-          </div>
-          <div class="col-lg-6">
-            <%= form.label :query, "Description:" %>
-            <%= form.text_field :description, size: "43x1" %>
-          </div>
-        </div>
-        <%= form.submit %>
+          <%= form.submit %>
         <% end %>
       </div>
     </div>
