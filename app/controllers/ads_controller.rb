@@ -41,6 +41,10 @@ class AdsController < ApplicationController
     redirect_to ads_path
   end
 
+    def favorites
+      @ads=Ad.all
+    end
+
   private
 
   def current_ad
