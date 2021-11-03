@@ -6,12 +6,12 @@
       <div class="field">
         <%= f.label :email %>
         <br />
-        <%= f.text_field :email, autofocus: true, autocomplete: "email", class:"field_width" %>
+        <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "field_width" %>
       </div>
       <div class="field">
         <%= f.label :password %>
         <br />
-        <%= f.password_field :password, autocomplete: "current-password", class:"field_width" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "field_width" %>
       </div>
       <% if devise_mapping.rememberable? %>
         <div class="field">
