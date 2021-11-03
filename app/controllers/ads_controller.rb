@@ -2,7 +2,7 @@ class AdsController < ApplicationController
   before_action :current_ad, only: %i[show edit update destroy]
 
   def index
-    @ads = Ad.all
+    @pagy, @ads = pagy(Ad.all, items: 2)
   end
 
   def show; end
@@ -41,9 +41,9 @@ class AdsController < ApplicationController
     redirect_to ads_path
   end
 
-    def favorites
-      @ads=Ad.all
-    end
+  def favorites
+    @pagy, @ads = pagy(Ad.all, items: 2)
+  end
 
   private
 
