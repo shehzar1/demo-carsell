@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_action :current_ad, only: [:show, :edit, :update, :destroy]
+  before_action :current_ad, only: %i[show edit update destroy]
 
   def index
     @ads = Ad.all
@@ -13,8 +13,9 @@ class AdsController < ApplicationController
 
   def create
     @ad = Ad.create(ad_params)
+
     if @ad.save
-      redirect_to @ad, notice: "Ad saved successfully."
+      redirect_to @ad, notice: "Ad created successfully."
     else
       render 'new'
     end
