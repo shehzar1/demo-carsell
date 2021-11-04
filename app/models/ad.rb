@@ -5,5 +5,5 @@ class Ad < ApplicationRecord
   TRANSMISSION = ['Automatic', 'Manual'].freeze
   ASSEMBLY = ['Local', 'Imported'].freeze
   COLOR = ['Black' ,'White'].freeze
-  ITEMS = 2.freeze
+  PER_PAGE_COUNT = 2.freeze
 end
