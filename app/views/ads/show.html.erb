@@ -1,0 +1,54 @@
+<div class="container_green">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10">
+        <h1><%= @ad.description %></h1>
+        <h4><%= @ad.city %></h4>
+      </div>
+      <div class="col-sm-2 border-left border-dark">
+        <h4><%= @ad.price %></h4>
+        <h4>PKR</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="center_div">
+            <button type="button" class="btn btn-success">+923005007123 Phone Number</button>
+            <button type="button" class="btn btn-outline-info mt-8">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <h4>Car Make</h4>
+              <h4>Engine Type</h4>
+              <h4>Engine Capacity (cc)</h4>
+              <h4>Milage (km)</h4>
+              <h4>Color</h4>
+              <h4>Assembly</h4>
+              <h4>Transmission Type</h4>
+            </div>
+            <div class="col-lg-6 border-left border-dark">
+              <h4>"<%= @ad.car_make %>"</h4>
+              <h4>"<%= @ad.engine_type %>"</h4>
+              <h4>"<%= @ad.engine_capacity %>"</h4>
+              <h4>"<%= @ad.milage %>"</h4>
+              <h4>"<%= @ad.color %>"</h4>
+              <h4>"<%= @ad.assembly_type %>"</h4>
+              <h4>"<%= @ad.transmission_type %>"</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
