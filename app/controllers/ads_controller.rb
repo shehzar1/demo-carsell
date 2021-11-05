@@ -2,7 +2,7 @@ class AdsController < ApplicationController
   before_action :current_ad, only: %i[show edit update destroy]
 
   def index
-    @pagy, @ads = pagy(Ad.all, items: 2)
+    @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
   end
 
   def show; end
@@ -15,7 +15,7 @@ class AdsController < ApplicationController
     @ad = Ad.create(ad_params)
 
     if @ad.save
-      redirect_to @ad, notice: "Ad created successfully."
+      redirect_to ad_steps_url, notice: "Ad created successfully."
     else
       render 'new'
     end
@@ -42,7 +42,7 @@ class AdsController < ApplicationController
   end
 
   def favorites
-    @pagy, @ads = pagy(Ad.all, items: 2)
+    @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
   end
 
   private
