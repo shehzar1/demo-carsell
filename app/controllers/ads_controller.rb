@@ -2,7 +2,7 @@ class AdsController < ApplicationController
   before_action :current_ad, only: %i[show edit update destroy]
 
   def index
-    @ads = Ad.all
+    @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
   end
 
   def show; end
@@ -39,6 +39,10 @@ class AdsController < ApplicationController
     end
 
     redirect_to ads_path
+  end
+
+  def favorites
+    @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
   end
 
   private
