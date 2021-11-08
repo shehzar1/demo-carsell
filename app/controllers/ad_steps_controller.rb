@@ -9,13 +9,8 @@ class AdStepsController < ApplicationController
 
   def update
     @ad = Ad.find(params[:ad_id])
-    case step
-      when :image_step
-        if ((params[:ad]).present?)
-          @ad.images.attach(params[:ad][:images])
-        end
-      # when :phone_step
-      #   @ad.update_attributes(:secondary_contact, :featured)
+    if ((params[:ad]).present?)
+      @ad.images.attach(params[:ad][:images])
     end
     render_wizard(@ad,{},ad: @ad)
   end
