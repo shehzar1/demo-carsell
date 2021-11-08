@@ -7,18 +7,18 @@ class AdStepsController < ApplicationController
     render_wizard
   end
 
-
   def update
-
-    # @ad = Ad.find(params.require(:ad).permit(:id))
     @ad = Ad.find(params[:ad_id])
-    @ad.images.attach(params[:ad][:images])
-    # if @ad.images.attached?
-    #   puts "attached"
-    # end
-    # if ((params[:ad]).present?)
-    #   @ad.images.attach(params[:ad][:images])
-    # end
-    render_wizard(@ad, {}, ad: @ad)
+    case step
+      when :image_step
+        if ((params[:ad]).present?)
+          @ad.images.attach(params[:ad][:images])
+        end
+      # when :phone_step
+      #   @ad.update_attributes(:secondary_contact, :featured)
+    end
+    render_wizard(@ad,{},ad: @ad)
   end
+
 end
+

@@ -3,7 +3,6 @@
     <button type="button" class="btn btn-success btn-lg">Add Car Information</button>
     <h3>---Add Image---</h3>
   </div>
-
   <div class="card">
     <%= form_with(model: @ad, local: true, method: :put, url: ad_step_path) do |f| %>
       <%= hidden_field_tag :ad_id, @ad.id %>
