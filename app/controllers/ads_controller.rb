@@ -15,7 +15,7 @@ class AdsController < ApplicationController
     @ad = Ad.create(ad_params)
 
     if @ad.save
-      redirect_to ad_steps_url, notice: "Ad created successfully."
+      redirect_to ad_steps_url(:image_step, ad: @ad)#, notice: "Ad created successfully."
     else
       render 'new'
     end
@@ -54,6 +54,6 @@ class AdsController < ApplicationController
   private
 
   def ad_params
-    params.require(:ad).permit(:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description)
+    params.require(:ad).permit(:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description, images: [])
   end
 end

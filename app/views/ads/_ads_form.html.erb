@@ -30,7 +30,7 @@
         </div>
         <div class="row">
           <div class="col-lg-6">
-            <div class="row">
+            <div class="row mt-4">
               <div class="col-lg-4">
                 <%= form.label :query, "CarMake:" %>
                 <%= form.select :car_make, Ad::MAKE %>
@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="row">
+            <div class="row mt-4">
               <div class="col-lg-5">
                 <%= form.label :query, "Milage:" %>
                 <%= form.text_field :milage, size: "0.1x1" %>
@@ -64,7 +64,9 @@
             <%= form.text_field :description, size: "43x1" %>
           </div>
         </div>
-        <%= form.submit %>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+          <%= form.submit class: "btn btn-warning btn-lg btn-block mt-5"%>
+        </div>
       <% end %>
     </div>
   </div>

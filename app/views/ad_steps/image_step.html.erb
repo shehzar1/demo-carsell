@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="text-center">
+    <button type="button" class="btn btn-success btn-lg">Add Car Information</button>
+    <h3>---Add Image---</h3>
+  </div>
+
+  <div class="card">
+    <%= form_with(model: @ad, local: true, method: :put, url: ad_step_path) do |f| %>
+      <%= hidden_field_tag :ad_id, @ad.id %>
+      <%= f.label "Car Images" %>
+      <br>
+      <%= f.file_field :images, multiple: true, direct_upload: true %>
+      <%= f.submit "Update"%>
+    <% end %>
+  </div>
+</div>

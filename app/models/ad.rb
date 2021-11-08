@@ -1,4 +1,6 @@
 class Ad < ApplicationRecord
+  has_many_attached :images
+
   CITIES = ['Rawalpindi', 'Lahore', 'Quetta', 'Karachi', 'Peshawar', 'Islamabad'].freeze
   MAKE = ['Suzuki', 'Toyota', 'Honda', 'BMW'].freeze
   ENGINE = ['Petrol', 'Diesel', 'Hybrid'].freeze
