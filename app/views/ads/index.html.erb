@@ -9,11 +9,11 @@
           <div class="row">
             <div class="col-lg-4">
               <%= form.label :query, "City:" %>
-              <%= form.select :city, Ad::CITIES %>
+              <%= form.select :city, Ad::CITIES, include_blank: true %>
             </div>
             <div class="col-lg-5">
               <%= form.label :query, "Color:" %>
-              <%= form.select :color, Ad::COLOR %>
+              <%= form.select :color, Ad::COLOR, include_blank: true %>
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@
           <div class="row">
             <div class="col-lg-5">
               <%= form.label :query, "Transmission Type:" %>
-              <%= form.select :transmission_type, Ad::TRANSMISSION %>
+              <%= form.select :transmission_type, Ad::TRANSMISSION, include_blank: true %>
             </div>
             <div class="col-lg-7">
               <%= form.label :query, "Engine Capacity:" %>
@@ -35,11 +35,11 @@
           <div class="row mt-4">
             <div class="col-lg-4">
               <%= form.label :query, "CarMake:" %>
-              <%= form.select :car_make, Ad::MAKE %>
+              <%= form.select :car_make, Ad::MAKE, include_blank: true %>
             </div>
             <div class="col-lg-8">
               <%= form.label :query, "Assembly Type:" %>
-              <%= form.select :assembly_type, Ad::ASSEMBLY %>
+              <%= form.select :assembly_type, Ad::ASSEMBLY, include_blank: true %>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
       <div class="row mt-4">
         <div class="col-lg-6">
           <%= form.label :query, "Engine Type:" %>
-          <%= form.select :engine_type, Ad::ENGINE %>
+          <%= form.select :engine_type, Ad::ENGINE, include_blank: true %>
         </div>
         <div class="col-lg-6">
           <%= form.label :query, "Description:" %>
