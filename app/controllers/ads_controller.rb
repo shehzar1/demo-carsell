@@ -3,6 +3,16 @@ class AdsController < ApplicationController
 
   def index
     @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
+    @ads = @ads.all.search_ads(params[:city])if(params[:city].present?)
+    @ads = @ads.all.search_ads(params[:milage])if(params[:milage].present?)
+    @ads = @ads.all.search_ads(params[:car_make])if(params[:car_make].present?)
+    @ads = @ads.all.search_ads(params[:price])if(params[:price].present?)
+    @ads = @ads.all.search_ads(params[:engine_type])if(params[:engine_type].present?)
+    @ads = @ads.all.search_ads(params[:transmission_type])if(params[:transmission_type].present?)
+    @ads = @ads.all.search_ads(params[:engine_capacity])if(params[:engine_capacity].present?)
+    @ads = @ads.all.search_ads(params[:color])if(params[:color].present?)
+    @ads = @ads.all.search_ads(params[:assembly_type])if(params[:assembly_type].present?)
+    @ads = @ads.all.search_ads(params[:description])if(params[:description].present?)
   end
 
   def show; end
