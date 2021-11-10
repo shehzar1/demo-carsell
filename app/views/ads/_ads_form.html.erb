@@ -21,9 +21,9 @@
                 <%= form.label :query, "Transmission Type:" %>
                 <%= form.select :transmission_type, Ad::TRANSMISSION %>
               </div>
-              <div class="col-lg-7">
-                <%= form.label :query, "Engine Capacity:" %>
-                <%= form.text_field :engine_capacity, size: "0.1x1" %>
+             <div class="col-lg-6">
+                <%= form.label :query, "Price:" %>
+                <%= form.text_field :price, size: "0.1x1" %>
               </div>
             </div>
           </div>
@@ -48,8 +48,8 @@
                 <%= form.text_field :milage, size: "0.1x1" %>
               </div>
               <div class="col-lg-6">
-                <%= form.label :query, "Price:" %>
-                <%= form.text_field :price, size: "0.1x1" %>
+                <%= form.label :query, "Engine Capacity:" %>
+                <%= form.text_field :engine_capacity, size: "0.1x1" %>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@
             <%= form.text_field :description, size: "43x1" %>
           </div>
         </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <div class="d-grid gap-2">
           <%= form.submit class: "btn btn-warning btn-lg btn-block mt-5"%>
         </div>
       <% end %>
