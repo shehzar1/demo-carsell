@@ -52,7 +52,22 @@ class AdsController < ApplicationController
   end
 
   def favorites
-    @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
+    if user_signed_in?
+      fav = Favorite.new()
+      fav.user_id = current_user.id
+      fav.ad_id = params[:id]
+      redirect_to ads_path
+      # @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
+    else
+      redirect_to new_user_registration_path
+    end
+  end
+
+  def myfavorites
+    @ads = Array.new()
+    current_user.favorites.each do |f|
+      @ads << f.ad
+    end
   end
 
   private

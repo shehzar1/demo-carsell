@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :ads
+  has_many :favorites
+  has_many :ads, through: :favorites
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
