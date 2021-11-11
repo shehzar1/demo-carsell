@@ -56,6 +56,7 @@ class AdsController < ApplicationController
       fav = Favorite.new()
       fav.user_id = current_user.id
       fav.ad_id = params[:id]
+      fav.save
       redirect_to ads_path
       # @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
     else

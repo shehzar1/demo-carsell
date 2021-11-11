@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @ads.find_each do |ad| %>
+          <% @ads.find_all do |ad| %>
             <tr>
               <td><%= link_to ad.car_make, ad %></td>
               <td><%= ad.description %></td>
@@ -37,6 +37,5 @@
         </tbody>
       </table>
     </div>
-    <%= pagy_bootstrap_nav(@pagy).html_safe %>
   </div>
 <% end %>
