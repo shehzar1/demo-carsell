@@ -58,7 +58,6 @@ class AdsController < ApplicationController
       fav.ad_id = params[:id]
       fav.save
       redirect_to ads_path
-      # @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
     else
       redirect_to new_user_registration_path
     end
@@ -69,6 +68,7 @@ class AdsController < ApplicationController
     current_user.favorites.each do |f|
       @ads << f.ad
     end
+    @pagy2, @favorites = pagy(Favorite.all, items: Ad::PER_PAGE_COUNT)
   end
 
   private
