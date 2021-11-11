@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_many :ads
   has_many :favorites
   has_many :ads, through: :favorites
 

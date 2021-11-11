@@ -4,7 +4,6 @@ class Ad < ApplicationRecord
   has_many_attached :images
   has_many :favorites
   has_many :users, through: :favorites
-  belongs_to :user
 
   pg_search_scope :search_ads, against: [:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description]
 
