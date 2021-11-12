@@ -56,11 +56,25 @@ class AdsController < ApplicationController
       fav = Favorite.new()
       fav.user_id = current_user.id
       fav.ad_id = params[:id]
-      fav.save
+      if fav.save
+        flash[:notice] = "Ad added to Favorites"
+      else
+        flash[:alert] = @ad.errors.full_messages.to_sentence
+
       redirect_to ads_path
     else
-      redirect_to new_user_registration_path
+      redirect_to new_user_registration_path, notice: "Please login first"
     end
+  end
+
+  def unfavorite
+    if Favorite.where(ad_id: params[:id]).destroy_all
+      flash[:notice] = "Ad removed from Favorites."
+    else
+      flash[:alert] = @ad.errors.full_messages.to_sentence
+    end
+
+    redirect_to myfavorites_ads_path
   end
 
   def myfavorites
@@ -68,7 +82,7 @@ class AdsController < ApplicationController
     current_user.favorites.each do |f|
       @ads << f.ad
     end
-    @pagy2, @favorites = pagy(Favorite.all, items: Ad::PER_PAGE_COUNT)
+    @pagy2, @favs = pagy(current_user.favorites.where(user_id: current_user.id), items: Ad::PER_PAGE_COUNT)
   end
 
   private

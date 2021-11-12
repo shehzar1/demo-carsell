@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :ads do
     member do
       get :favorites
+      get :unfavorite
     end
     collection do
       get :myfavorites
