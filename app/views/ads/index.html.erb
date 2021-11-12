@@ -92,7 +92,11 @@
         <tbody>
           <% @ads.find_each do |ad| %>
           <tr>
-            <td><%= link_to ad.car_make, ad %></td>
+            <td><%= link_to ad.car_make, ad %>
+              <% if ad.images.attached? %>
+                <%= image_tag ad.images.first, size: "160x100", class: 'image' %>
+              <% end %>
+            </td>
             <td><%= ad.description %></td>
             <td><%= ad.city %></td>
             <td><%= ad.price %></td>

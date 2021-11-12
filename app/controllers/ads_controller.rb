@@ -60,6 +60,7 @@ class AdsController < ApplicationController
         flash[:notice] = "Ad added to Favorites"
       else
         flash[:alert] = @ad.errors.full_messages.to_sentence
+      end
 
       redirect_to ads_path
     else
