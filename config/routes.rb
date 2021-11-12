@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
     collection do
       get :myfavorites
+      get :myposts
     end
   end
   resources :ad_steps

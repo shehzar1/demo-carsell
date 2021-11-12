@@ -23,7 +23,7 @@ class AdsController < ApplicationController
 
   def create
     @ad = Ad.create(ad_params)
-
+    @ad.user_id = current_user.id
     if @ad.save
       redirect_to ad_steps_url(:image_step, ad: @ad), notice: "Ad created successfully."
     else
@@ -83,7 +83,12 @@ class AdsController < ApplicationController
     current_user.favorites.each do |f|
       @ads << f.ad
     end
-    @pagy2, @favs = pagy(current_user.favorites.where(user_id: current_user.id), items: Ad::PER_PAGE_COUNT)
+    @pagy, @ads = pagy_array(@ads, items: Ad::PER_PAGE_COUNT)
+  end
+
+  def myposts
+    @ads = Ad.all.where(user_id: current_user)
+    @pagy, @ads = pagy(@ads, items: Ad::PER_PAGE_COUNT)
   end
 
   private
@@ -95,6 +100,6 @@ class AdsController < ApplicationController
   private
 
   def ad_params
-    params.require(:ad).permit(:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description, :primary_contact, :secondary_contact, images: [])
+    params.require(:ad).permit(:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description, :primary_contact, :secondary_contact, :user_id, images: [])
   end
 end
