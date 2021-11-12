@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       get :favorites
       get :unfavorite
+      get :close
     end
     collection do
       get :myfavorites

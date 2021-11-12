@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_091009) do
+ActiveRecord::Schema.define(version: 2021_11_12_115847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_091009) do
     t.string "primary_contact"
     t.string "secondary_contact"
     t.integer "user_id"
+    t.boolean "close_status", default: false
   end
 
   create_table "favorites", force: :cascade do |t|

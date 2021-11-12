@@ -1,8 +1,8 @@
 class AdsController < ApplicationController
-  before_action :current_ad, only: %i[show edit update destroy]
+  before_action :current_ad, only: %i[show edit update destroy close]
 
   def index
-    @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
+    @pagy, @ads = pagy(Ad.where(close_status: false), items: Ad::PER_PAGE_COUNT)
     @ads = @ads.all.search_ads(params[:city])if(params[:city].present?)
     @ads = @ads.all.search_ads(params[:milage])if(params[:milage].present?)
     @ads = @ads.all.search_ads(params[:car_make])if(params[:car_make].present?)
@@ -91,6 +91,16 @@ class AdsController < ApplicationController
     @pagy, @ads = pagy(@ads, items: Ad::PER_PAGE_COUNT)
   end
 
+  def close
+    if @ad.update_attribute(:close_status, true)
+      flash[:notice] = "Ad Closed successfully"
+    else
+      flash[:alert] = @ad.errors.full_messages.to_sentence
+    end
+
+    redirect_to myposts_ads_path
+  end
+
   private
 
   def current_ad
@@ -100,6 +110,6 @@ class AdsController < ApplicationController
   private
 
   def ad_params
-    params.require(:ad).permit(:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description, :primary_contact, :secondary_contact, :user_id, images: [])
+    params.require(:ad).permit(:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description, :primary_contact, :secondary_contact, :user_id, :close_status, images: [])
   end
 end

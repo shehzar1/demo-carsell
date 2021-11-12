@@ -32,12 +32,12 @@
               <td><%= ad.milage %></td>
               <td><%= ad.color %></td>
               <td><%= ad.assembly_type %></td>
-              <td><%= ad.transmission_type %></td>
+              <td><%= ad.close_status %></td>
               <td>
                 <%= link_to 'Delete', ad, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
                 <%= link_to 'Details', ad, class:"btn btn-outline-success btn-sm" %>
                 <%= link_to 'Edit', edit_ad_path(ad), class:"btn btn-outline-warning btn-sm" %>
-                <%= link_to 'Close', edit_ad_path(ad), class:"btn btn-outline-secondary btn-sm" %>
+                <%= link_to 'Close', close_ad_path(ad), class:"btn btn-outline-secondary btn-sm" %>
               </td>
             </tr>
           <% end %>
