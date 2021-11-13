@@ -16,6 +16,6 @@ class Ad < ApplicationRecord
   PER_PAGE_COUNT = 4.freeze
   PHONE_REGEX = /^((\+92))-{0,1}\d{3}-{0,1}\d{7}$/.freeze
 
-  validates :primary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
+  validates :primary_contact, format: {with: /^[0-9]{11}$/, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
   validates :secondary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
 end
