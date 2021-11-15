@@ -11,7 +11,7 @@
     <h3>Add Images</h3>
     <%= form_with(model: @ad, local: true, method: :put, url: ad_step_path) do |f| %>
       <%= hidden_field_tag :ad_id, @ad.id %>
-      <%= f.file_field :images, multiple: true, direct_upload: true, class: "btn btn-outline-success mt-5" %>
+      <%= f.file_field :images, multiple: true, direct_upload: true, accept:'image/*', class: "btn btn-outline-success mt-5" %>
       <br>
       <%= f.submit "Add Images", class: "btn btn-primary mt-5 mb-5" %>
     <% end %>

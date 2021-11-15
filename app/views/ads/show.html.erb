@@ -21,7 +21,13 @@
             <button type="button" class="btn btn-outline-success mb-4">View Phone Information<%= @ad.primary_contact %></button>
             <button type="button" class="btn btn-outline-info mb-4">Send Message</button>
             <% if @ad.images.attached? %>
-              <%= image_tag @ad.images.first, size: "160x100", class: 'image' %>
+              <div class=”carousel-inner”>
+              <%@ad.images.each_with_index do |pic,i|%>
+                <div class="carousel-item <%= "active " if i==0 %>">
+                 <%= image_tag pic, size: "160x100" %>
+                </div>
+              <%end%>
+              </div>
             <% end %>
           </div>
         </div>
@@ -55,3 +61,4 @@
     </div>
   </div>
 </div>
+
