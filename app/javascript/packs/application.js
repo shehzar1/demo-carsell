@@ -13,3 +13,4 @@ import $ from 'jquery';
 global.$ = jQuery;
 
 console.log('Hello from application.js')
+alert("Hello Hello")
