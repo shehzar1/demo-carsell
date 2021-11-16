@@ -12,6 +12,8 @@ require("custom.js");
 import $ from 'jquery';
 import jQuery from 'jquery';
 global.$ = jQuery;
+require("trix")
+require("@rails/actiontext")
 
 $(document).ready(function(){
   $("#hide").click(function(){
