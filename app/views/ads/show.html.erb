@@ -17,9 +17,10 @@
     <div class="col-lg-6">
       <div class="card">
         <div class="card-body">
+          <button id="btn" type="button" class="btn btn-light btn-sm">Copy Ad Link</button>
           <div class="center_div">
-            <button type="button" class="btn btn-outline-success mb-4">View Phone Information<%= @ad.primary_contact %></button>
-            <button type="button" class="btn btn-outline-info mb-4">Send Message</button>
+            <button type="button" class="btn btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">View Phone Information</button>
+            <button type="button" class="btn btn-outline-info mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Send Message</button>
             <% if @ad.images.attached? %>
               <div class=”carousel-inner”>
               <%@ad.images.each_with_index do |pic,i|%>
@@ -62,3 +63,19 @@
   </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= @ad.primary_contact %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

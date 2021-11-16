@@ -10,7 +10,31 @@ require("@rails/activestorage").start();
 require("channels");
 require("custom.js");
 import $ from 'jquery';
+import jQuery from 'jquery';
 global.$ = jQuery;
 
-console.log('Hello from application.js')
-alert("Hello Hello")
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("#advance_search").toggle();
+  });
+  // $('.color_field').hide();
+  $("#ad_color").change(function(){
+    if($(this).val()=='Other'){
+      $('.color_field').show();
+      $('.color_field').removeClass("d-none")
+      $('#ad_color').hide();
+   }
+ });
+});
+
+$(document).ready(function(){
+  var $temp = $("<input>");
+  var $url = $(location).attr('href');
+  $('#btn').click(function() {
+    $("body").append($temp);
+    $temp.val($url).select();
+    document.execCommand("copy");
+    $temp.remove();
+    $("p").text("URL copied!");
+  });
+});

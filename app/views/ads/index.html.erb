@@ -30,42 +30,45 @@
           </div>
         </div>
       </div>
-      <div class="row">
-      <div class="col-lg-6">
-        <div class="row mt-4">
-          <div class="col-lg-4">
-            <%= form.label :query, "CarMake:" %>
-            <%= form.select :car_make, Ad::MAKE, include_blank: true %>
-          </div>
-          <div class="col-lg-8">
-            <%= form.label :query, "Assembly Type:" %>
-            <%= form.select :assembly_type, Ad::ASSEMBLY, include_blank: true %>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="row mt-4">
-          <div class="col-lg-5">
-            <%= form.label :query, "Milage:" %>
-            <%= form.text_field :milage, size: "0.1x1" %>
-          </div>
-          <div class="col-lg-7">
-            <%= form.label :query, "Engine Capacity:" %>
-            <%= form.text_field :engine_capacity, size: "0.1x1" %>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="row mt-4">
+      <div id="advance_search">
+        <div class="row">
         <div class="col-lg-6">
-          <%= form.label :query, "Engine Type:" %>
-          <%= form.select :engine_type, Ad::ENGINE, include_blank: true %>
+          <div class="row mt-4">
+            <div class="col-lg-4">
+              <%= form.label :query, "CarMake:" %>
+              <%= form.select :car_make, Ad::MAKE, include_blank: true %>
+            </div>
+            <div class="col-lg-8">
+              <%= form.label :query, "Assembly Type:" %>
+              <%= form.select :assembly_type, Ad::ASSEMBLY, include_blank: true %>
+            </div>
+          </div>
         </div>
         <div class="col-lg-6">
-          <%= form.label :query, "Description:" %>
-          <%= form.text_field :description, size: "43x1" %>
+          <div class="row mt-4">
+            <div class="col-lg-5">
+              <%= form.label :query, "Milage:" %>
+              <%= form.text_field :milage, size: "0.1x1" %>
+            </div>
+            <div class="col-lg-7">
+              <%= form.label :query, "Engine Capacity:" %>
+              <%= form.text_field :engine_capacity, size: "0.1x1" %>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-6">
+            <%= form.label :query, "Engine Type:" %>
+            <%= form.select :engine_type, Ad::ENGINE, include_blank: true %>
+          </div>
+          <div class="col-lg-6">
+            <%= form.label :query, "Description:" %>
+            <%= form.text_field :description, size: "43x1" %>
+          </div>
         </div>
       </div>
+      <button type="button" class="btn btn-success mt-4" id="hide">Show Less Options</button>
       <div class="d-grid gap-2">
         <%= form.submit "Search", class: "btn btn-warning btn-block mt-5 me-5"%>
       </div>
