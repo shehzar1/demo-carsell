@@ -17,7 +17,10 @@ $(document).ready(function(){
   $("#hide").click(function(){
     $("#advance_search").toggle();
   });
-  $("#ad_color").change(function(){
+});
+
+$(document).ready(function(){
+$("#ad_color").change(function(){
     if($(this).val()=='Other'){
       $('.color_field').show();
       $('.color_field').removeClass("d-none")
