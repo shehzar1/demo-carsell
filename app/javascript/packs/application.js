@@ -17,7 +17,6 @@ $(document).ready(function(){
   $("#hide").click(function(){
     $("#advance_search").toggle();
   });
-  // $('.color_field').hide();
   $("#ad_color").change(function(){
     if($(this).val()=='Other'){
       $('.color_field').show();
@@ -35,6 +34,5 @@ $(document).ready(function(){
     $temp.val($url).select();
     document.execCommand("copy");
     $temp.remove();
-    $("p").text("URL copied!");
   });
 });

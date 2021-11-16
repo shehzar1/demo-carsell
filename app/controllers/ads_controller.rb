@@ -35,7 +35,6 @@ class AdsController < ApplicationController
 
   def update
     if @ad.update(ad_params)
-      # redirect_to ad_steps_url(:image_step, ad: @ad), notice: "Ad updated successfully."
       redirect_to @ad, notice: "Ad updated successfully."
     else
       render 'edit'
