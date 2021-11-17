@@ -8,7 +8,8 @@
       <div class="card-body">
       <h4 class="text-center mb-4">Add Contact Information</h4>
 
-      <%= form_for(@ad) do |f| %>
+      <%= form_for(@ad, method: :put, url: wizard_path) do |f| %>
+      <%= hidden_field_tag :ad_id, @ad.id %>
         <div class="field">
           <%= f.label :primary_contact, "Primary Contact" %>
           <br />
