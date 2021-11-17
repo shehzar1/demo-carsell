@@ -37,14 +37,14 @@
                 <%= link_to 'Delete', ad, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
                 <%= link_to 'Details', ad, class:"btn btn-outline-success btn-sm" %>
                 <%= link_to 'Edit', edit_ad_path(ad), class:"btn btn-outline-warning btn-sm" %>
-                <%= link_to 'Close', close_ad_path(ad), class:"btn btn-outline-secondary btn-sm" %>
+                <%= link_to_if(!ad.close_status, "Close", close_ad_path(ad), class:"btn btn-outline-secondary btn-sm" ) { link_to( "Ad Closed" ) } %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
       <div class="center_div mt-4">
-        <%= link_to 'Add a New Ad', new_ad_path, class:"btn btn-primary" %>
+        <%= link_to 'Add a New Ad', new_ad_path, class:"btn btn-primary", id: "add", remote: true  %>
       </div>
       <%= pagy_bootstrap_nav(@pagy).html_safe %>
     </div>

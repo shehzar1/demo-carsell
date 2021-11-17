@@ -19,6 +19,9 @@ $(document).ready(function(){
   $("#hide").click(function(){
     $("#advance_search").toggle();
   });
+});
+
+$(document).ready(function(){
   $("#ad_color").change(function(){
     if($(this).val()=='Other'){
       $('.color_field').show();
@@ -38,3 +41,7 @@ $(document).ready(function(){
     $temp.remove();
   });
 });
+
+
+
+
