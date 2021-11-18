@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :myposts
     end
   end
+
   resources :ad_steps
   get 'home/index'
 end
