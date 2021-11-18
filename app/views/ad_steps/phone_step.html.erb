@@ -13,7 +13,7 @@
         <div class="field">
           <%= f.label :primary_contact, "Primary Contact" %>
           <br />
-          <%= f.text_field :primary_contact, placeholder: "+923005001200", autofocus: true %>
+          <%= f.text_field :primary_contact, placeholder: "+923005001200", autofocus: true, required: true%>
         </div>
         <div class="field mt-4">
           <%= f.label :secondary_contact, "Secondary Contact" %>
@@ -23,7 +23,7 @@
         <div class="actions">
           <div class="container">
             <div class="col text-center">
-              <%= f.submit "Post Ad", data: { confirm: "Are you sure you want to Post this Ad?" }, class: "btn btn-success mt-4" %>
+            <%= f.submit "Post Ad", data: { confirm: "Are you sure you want to Post this Ad?" }, class: "btn btn-success mt-4" %>
             </div>
           </div>
         </div>

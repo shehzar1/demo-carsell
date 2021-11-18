@@ -15,16 +15,26 @@ class Ad < ApplicationRecord
   ASSEMBLY = ['Local', 'Imported'].freeze
   COLOR = ['Black' ,'White', 'Other'].freeze
   PER_PAGE_COUNT = 4.freeze
-  PHONE_REGEX = /^((\+92))-{0,1}\d{3}-{0,1}\d{7}$/.freeze
+  PHONE_REGEX = /^((\+92)?(0092)?(92)?(0)?)(3)([0-9]{9})/.freeze
 
-  validate :validate_images
-  # validates :primary_contact, format: {with: /^[0-9]{11}$/, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
-  # validates :secondary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
+  # validate :validate_images
+  validates :images, length: { maximum: 5 , message: "cannot be more than 5 for an ad." }
+  validates :city, inclusion: { in: CITIES, message: "%{value} is invalid" }
+  validates :car_make, inclusion: { in: MAKE, message: "%{value} is invalid" }
+  validates :transmission_type, inclusion: { in: TRANSMISSION, message: "%{value} is invalid" }
+  validates :engine_type, inclusion: { in: ENGINE, message: "%{value} is invalid" }
+  # validates :color, presence: true
+  validates :assembly_type, inclusion: { in:  ASSEMBLY, message: "%{value} is invalid" }
+  validates :primary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
+  validates :secondary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
+  validates :milage, numericality: {only_integer: false}, presence: true
+  validates :price, numericality: {only_integer: false}, presence: true
+  validates :engine_capacity, numericality: {only_integer: false}, presence: true
 
-  private
+  # private
 
-  def validate_images
-    return if images.count < 6
-    errors.add(:images, 'You cannot upload more than 5 for an ad.')
-  end
+  # def validate_images
+  #   return if images.count < 6
+  #   errors.add(:images, 'You cannot upload more than 5 for an ad.')
+  # end
 end

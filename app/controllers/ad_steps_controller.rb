@@ -13,10 +13,15 @@ class AdStepsController < ApplicationController
       when :image_step
         if ((params[:ad]).present?)
           @ad.images.attach(params[:ad][:images])
+          flash[:alert] = @ad.errors.full_messages.to_sentence
         end
       render_wizard(@ad,{},ad_id: @ad)
       when :phone_step
         @ad.update(ad_params)
+        if (@ad.errors.any?)
+          flash[:alert] = @ad.errors.full_messages.to_sentence
+          render_wizard(@ad,{},ad_id: @ad) and return
+        end
         redirect_to @ad
     end
   end
