@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'charges/new'
-  get 'charges/create'
   root to: "home#index"
   devise_for :users
 
