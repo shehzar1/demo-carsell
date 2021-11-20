@@ -45,8 +45,6 @@ class AdsController < ApplicationController
     @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
   end
 
-  private
-
   def current_ad
     @ad = Ad.find(params[:id])
   end
