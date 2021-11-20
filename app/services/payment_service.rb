@@ -1,7 +1,5 @@
 class PaymentService
 
-  AMOUNT=100000.freeze
-
   def initialize(payment_params)
     @email = payment_params[:stripeEmail]
     @source = payment_params[:stripeToken]
