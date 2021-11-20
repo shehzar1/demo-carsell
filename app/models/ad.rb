@@ -22,7 +22,7 @@ class Ad < ApplicationRecord
   validates :car_make, inclusion: { in: MAKE, message: "%{value} is invalid" }
   validates :transmission_type, inclusion: { in: TRANSMISSION, message: "%{value} is invalid" }
   validates :engine_type, inclusion: { in: ENGINE, message: "%{value} is invalid" }
-  # validates :color, presence: true
+  validates :color, presence: true
   validates :assembly_type, inclusion: { in:  ASSEMBLY, message: "%{value} is invalid" }
   validates :primary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
   validates :secondary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true

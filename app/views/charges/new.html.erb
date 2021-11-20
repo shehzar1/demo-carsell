@@ -1,13 +1,10 @@
-<%= form_tag charges_path(ad_id: params[:ad_id]) do %>
+<%= form_for :pay, url: charges_path(ad_id: params[:ad_id]) do %>
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <label class="amount">
-      <span><%= @amount/100 %> PKR</span>
-    </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

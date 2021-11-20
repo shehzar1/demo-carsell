@@ -29,7 +29,7 @@
         </div>
       <% end %>
       <div class="col text-center">
-        <%= link_to "Get Featured", new_charge_path(ad_id: @ad.id), class: "btn btn-warning mt-4" %>
+        <%= link_to_if(!@ad.featured, "Get Featured", new_charge_path(ad_id: @ad.id), class: "btn btn-warning mt-4" ) { link_to( "Ad Already Featured") } %>
       </div>
       </div>
     </div>
