@@ -11,5 +11,3 @@ require("channels");
 require("custom.js");
 import $ from 'jquery';
 global.$ = jQuery;
-
-console.log('Hello from application.js')
