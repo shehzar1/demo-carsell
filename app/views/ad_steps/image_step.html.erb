@@ -4,7 +4,7 @@
     <h3>Add Image</h3>
   </div>
   <div class="card">
-    <%= form_with(model: @ad, local: true, method: :put, url: ad_step_path) do |f| %>
+    <%= form_for @ad, method: :put, url: ad_step_path do |f| %>
       <%= hidden_field_tag :ad_id, @ad.id %>
       <%= f.label "Car Images" %>
       <%= f.file_field :images, multiple: true, direct_upload: true %>
