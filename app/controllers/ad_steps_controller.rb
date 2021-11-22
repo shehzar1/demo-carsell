@@ -10,7 +10,7 @@ class AdStepsController < ApplicationController
   end
 
   def update
-    @ad.images.attach(ad_images_params[:images]) if params.dig(:ad,:images).present?
+    @ad.images.attach(ad_images_params[:images]) if params.dig(:ad, :images).present?
     render_wizard(@ad,{},ad_id: @ad)
   end
 
