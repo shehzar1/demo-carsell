@@ -15,7 +15,7 @@ class AdsController < ApplicationController
     @ad = Ad.create(ad_params)
 
     if @ad.save
-      redirect_to ad_steps_url(:image_step, ad: @ad), notice: "Ad created successfully."
+      redirect_to ad_steps_url(:image_step, ad_id: @ad.id), notice: "Ad created successfully."
     else
       render 'new'
     end

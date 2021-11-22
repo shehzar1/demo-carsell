@@ -10,12 +10,12 @@ class AdStepsController < ApplicationController
   end
 
   def update
-    @ad.images.attach(params[:ad][:images])
+    @ad.images.attach(params[:ad_id][:images])
     render_wizard(@ad,{},ad: @ad)
   end
 
   def current_ad
-    @ad = Ad.find(params[:id])
+    @ad = Ad.find(params[:ad_id])
   end
 
 end
