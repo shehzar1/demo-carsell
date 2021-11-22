@@ -17,7 +17,8 @@ class Ad < ApplicationRecord
   validates :primary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true},allow_blank: true
   validates :secondary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true},allow_blank: true
 
-  def self.search(params)
+  def self.search(var, params)
+    @ads=var.all
     @ads = search_ads(params[:city])if(params[:city].present?)
     @ads = search_ads(params[:milage])if(params[:milage].present?)
     @ads = search_ads(params[:car_make])if(params[:car_make].present?)
