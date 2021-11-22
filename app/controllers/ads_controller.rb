@@ -3,7 +3,7 @@ class AdsController < ApplicationController
 
   def index
     if params.present?
-      @pagy, @ads = pagy(Ad.search(Ad, params), items: Ad::PER_PAGE_COUNT)
+      @pagy, @ads = pagy(Ad.search(params), items: Ad::PER_PAGE_COUNT)
     else
       @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
     end
