@@ -10,9 +10,7 @@ class AdStepsController < ApplicationController
   end
 
   def update
-    if ((params[:ad]).present?)
-      @ad.images.attach(params.dig(:ad,:images))
-    end
+    @ad.images.attach(ad_images_params[:images]) if params.dig(:ad,:images).present?
     render_wizard(@ad,{},ad_id: @ad)
   end
 
@@ -20,5 +18,7 @@ class AdStepsController < ApplicationController
     @ad = Ad.find(params[:ad_id])
   end
 
+  def ad_images_params
+    params.require(:ad).permit(images: [])
+  end
 end
-

@@ -20,7 +20,7 @@
           <div class="center_div">
             <button type="button" class="btn btn-outline-success mb-4">Contact <%= @ad.primary_contact %></button>
             <button type="button" class="btn btn-outline-info mb-4">Send Message</button>
-            <% if @ad.images.attached? %><%= image_tag @ad.images.first, size: "160x100", class: 'image' %><% end %>
+            <%= image_tag @ad.images.first, size: "160x100", class: 'image' if @ad.images.attached? %>
           </div>
         </div>
       </div>
