@@ -3,7 +3,7 @@
     <h1>Search Ads</h1>
   </div>
   <div class="container-fluid m-4">
-    <%= form_with(url: ads_path, method: :get) do |form| %>
+    <%= form_for('search', url: ads_path, method: :get) do |form| %>
       <div class="row">
         <div class="col-lg-6">
           <div class="row">

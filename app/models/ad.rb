@@ -3,7 +3,12 @@ class Ad < ApplicationRecord
 
   has_many_attached :images
 
-  pg_search_scope :search_ads, against: [:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description]
+  pg_search_scope :search_ads, lambda { |key, query| [:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description].include?(key)
+    {
+      against: key,
+      query: query
+    }
+  }
 
   CITIES = ['Rawalpindi', 'Lahore', 'Quetta', 'Karachi', 'Peshawar', 'Islamabad'].freeze
   MAKE = ['Suzuki', 'Toyota', 'Honda', 'BMW'].freeze
@@ -14,22 +19,16 @@ class Ad < ApplicationRecord
   PER_PAGE_COUNT = 4.freeze
   PHONE_REGEX = /^((\+92))-{0,1}\d{3}-{0,1}\d{7}$/.freeze
 
-  validates :primary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true},allow_blank: true
-  validates :secondary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true},allow_blank: true
+  validates :primary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
+  validates :secondary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true}, allow_blank: true
 
-  def self.search(params)
+  def self.search(query_hash)
     scope = Ad.all
-    scope = scope.search_ads(params[:city]) if (params[:city].present?)
-    scope = scope.search_ads(params[:milage]) if (params[:milage].present?)
-    scope = scope.search_ads(params[:car_make]) if (params[:car_make].present?)
-    scope = scope.search_ads(params[:price]) if (params[:price].present?)
-    scope = scope.search_ads(params[:engine_type]) if (params[:engine_type].present?)
-    scope = scope.search_ads(params[:transmission_type]) if (params[:transmission_type].present?)
-    scope = scope.search_ads(params[:engine_capacity]) if (params[:engine_capacity].present?)
-    scope = scope.search_ads(params[:color]) if (params[:color].present?)
-    scope = scope.search_ads(params[:assembly_type]) if (params[:assembly_type].present?)
-    scope = scope.search_ads(params[:description]) if (params[:description].present?)
-
+    if query_hash.present?
+      query_hash.each do |key, value|
+        scope = scope.search_ads(key, value) if (value.present?)
+      end
+    end
     scope
   end
 end
