@@ -1,5 +1,4 @@
 class PaymentService
-
   def initialize(payment_params)
     @email = payment_params[:stripeEmail]
     @source = payment_params[:stripeToken]
@@ -21,7 +20,7 @@ class PaymentService
       amount: @amount,
       description: @description,
       currency: @currency
-      )
+    )
   end
 
   def payment

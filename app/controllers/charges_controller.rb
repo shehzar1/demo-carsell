@@ -15,5 +15,4 @@ class ChargesController < ApplicationController
   def payment_params
     params.permit(:stripeEmail, :stripeToken)
   end
-
 end

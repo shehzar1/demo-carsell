@@ -29,5 +29,4 @@ class Ad < ApplicationRecord
   validates :milage, numericality: {only_integer: false}, presence: true
   validates :price, numericality: {only_integer: false}, presence: true
   validates :engine_capacity, numericality: {only_integer: false}, presence: true
-
 end
