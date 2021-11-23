@@ -14,7 +14,7 @@ class AdStepsController < ApplicationController
     if @ad.images.attached?
       render_wizard(@ad, {}, ad_id: @ad)
     else
-      redirect_to @ad, notice: "Error: Image not attached"
+      redirect_to @ad, alert: "Error: Image not attached"
   end
 
   def current_ad
