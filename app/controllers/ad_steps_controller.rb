@@ -11,7 +11,10 @@ class AdStepsController < ApplicationController
 
   def update
     @ad.images.attach(ad_images_params[:images]) if params.dig(:ad, :images).present?
-    render_wizard(@ad,{},ad_id: @ad)
+    if @ad.images.attached?
+      render_wizard(@ad, {}, ad_id: @ad)
+    else
+      redirect_to @ad, notice: "Error: Image not attached"
   end
 
   def current_ad
