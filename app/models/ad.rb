@@ -18,17 +18,18 @@ class Ad < ApplicationRecord
   validates :secondary_contact, format: {with: PHONE_REGEX, message: "format should be +92-3XX-XXXXXXX", multiline: true},allow_blank: true
 
   def self.search(params)
-    @ad = Ad.all
-    @ad = @ad.search_ads(params[:city]) if (params[:city].present?)
-    @ad = @ad.search_ads(params[:milage]) if (params[:milage].present?)
-    @ad = @ad.search_ads(params[:car_make]) if (params[:car_make].present?)
-    @ad = @ad.search_ads(params[:price]) if (params[:price].present?)
-    @ad = @ad.search_ads(params[:engine_type]) if (params[:engine_type].present?)
-    @ad = @ad.search_ads(params[:transmission_type]) if (params[:transmission_type].present?)
-    @ad = @ad.search_ads(params[:engine_capacity]) if (params[:engine_capacity].present?)
-    @ad = @ad.search_ads(params[:color]) if (params[:color].present?)
-    @ad = @ad.search_ads(params[:assembly_type]) if (params[:assembly_type].present?)
-    @ad = @ad.search_ads(params[:description]) if (params[:description].present?)
-    return @ad
+    scope = Ad.all
+    scope = scope.search_ads(params[:city]) if (params[:city].present?)
+    scope = scope.search_ads(params[:milage]) if (params[:milage].present?)
+    scope = scope.search_ads(params[:car_make]) if (params[:car_make].present?)
+    scope = scope.search_ads(params[:price]) if (params[:price].present?)
+    scope = scope.search_ads(params[:engine_type]) if (params[:engine_type].present?)
+    scope = scope.search_ads(params[:transmission_type]) if (params[:transmission_type].present?)
+    scope = scope.search_ads(params[:engine_capacity]) if (params[:engine_capacity].present?)
+    scope = scope.search_ads(params[:color]) if (params[:color].present?)
+    scope = scope.search_ads(params[:assembly_type]) if (params[:assembly_type].present?)
+    scope = scope.search_ads(params[:description]) if (params[:description].present?)
+
+    scope
   end
 end

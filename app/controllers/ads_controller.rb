@@ -2,11 +2,7 @@ class AdsController < ApplicationController
   before_action :current_ad, only: %i[show edit update destroy]
 
   def index
-    if params.present?
-      @pagy, @ads = pagy(Ad.search(params), items: Ad::PER_PAGE_COUNT)
-    else
-      @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
-    end
+    @pagy, @ads = pagy(Ad.search(params), items: Ad::PER_PAGE_COUNT)
   end
 
   def show; end
