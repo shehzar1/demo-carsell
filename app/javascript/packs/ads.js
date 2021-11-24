@@ -1,7 +1,3 @@
-import $ from 'jquery';
-import jquery from 'jquery';
-global.$ = jquery;
-
 $(document).on('turbolinks:load', function() {
  $("#hide").click(function(){
    $("#advance_search").toggle();

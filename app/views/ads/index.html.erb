@@ -96,7 +96,7 @@
           <% @ads.find_each do |ad| %>
           <tr>
             <td><%= link_to ad.car_make, ad %>
-              <%= image_tag ad.images.first, size: "160x100", class: 'image' if ad.images.attached? %>
+              <%= image_tag ad.images.first, class: 'image image_size' if ad.images.attached? %>
             </td>
             <td><%= ad.description %></td>
             <td><%= ad.city %></td>
