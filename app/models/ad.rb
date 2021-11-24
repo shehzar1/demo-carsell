@@ -16,18 +16,11 @@ class Ad < ApplicationRecord
   PER_PAGE_COUNT = 4.freeze
   PHONE_REGEX = /^((\+92))-{0,1}\d{3}-{0,1}\d{7}$/.freeze
 
-  def self.search(var, params)
-    @ads=var.all
-    @ads = search_ads(params[:city])if(params[:city].present?)
-    @ads = search_ads(params[:milage])if(params[:milage].present?)
-    @ads = search_ads(params[:car_make])if(params[:car_make].present?)
-    @ads = search_ads(params[:price])if(params[:price].present?)
-    @ads = search_ads(params[:engine_type])if(params[:engine_type].present?)
-    @ads = search_ads(params[:transmission_type])if(params[:transmission_type].present?)
-    @ads = search_ads(params[:engine_capacity])if(params[:engine_capacity].present?)
-    @ads = search_ads(params[:color])if(params[:color].present?)
-    @ads = search_ads(params[:assembly_type])if(params[:assembly_type].present?)
-    @ads = search_ads(params[:description])if(params[:description].present?)
-    return @ads
+  def self.search(query_hash)
+    scope = Ad.all
+    if query_hash.present?
+      query_hash.each do |key, value| scope = scope.search_ads(key, value) if (value.present?) end
+    end
+    scope
   end
 end
