@@ -10,11 +10,12 @@ class AdStepsController < ApplicationController
   end
 
   def update
-    @ad.images.attach(ad_images_params[:images]) if params.dig(:ad, :images).present?
-    if @ad.images.attached?
-      render_wizard(@ad, {}, ad_id: @ad)
-    else
-      redirect_to @ad, alert: "Error: Image not attached"
+    if params.dig(:ad, :images).present?
+      img_count = @ad.images.count
+      @ad.images.attach(ad_images_params[:images])
+      redirect_to ad_steps_url(:image_step, ad_id: @ad.id), alert: "No new image attached: Please try again." and return if img_count >= @ad.images.all.count
+    end
+    render_wizard(@ad, {}, ad_id: @ad)
   end
 
   def current_ad
