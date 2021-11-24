@@ -7,11 +7,19 @@ class PaymentService
     @currency = set_currency
   end
 
+  def process
+    create_customer
+    create_charge
+
+  rescue Stripe::CardError => e
+    failure_response(e.message)
+  end
+
   def create_customer
     @customer = Stripe::Customer.create(
       email: @email,
       source: @source
-      )
+    )
   end
 
   def create_charge
@@ -20,15 +28,15 @@ class PaymentService
       amount: @amount,
       description: @description,
       currency: @currency
-    )
+      )
   end
 
-  def payment
-    {"customer": create_customer, "charge": create_charge}
+  def failure_response(message)
+    error_message = message
+  end
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
+  def success?
+    customer.present? && charge.present? && error_message.blank?
   end
 
   def set_amount
