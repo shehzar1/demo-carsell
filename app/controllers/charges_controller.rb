@@ -19,7 +19,6 @@ class ChargesController < ApplicationController
     @featured_ad = Ad.find_by(id: params[:ad_id])
   end
 
-
   private
 
   def payment_params
