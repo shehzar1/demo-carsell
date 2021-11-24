@@ -10,7 +10,6 @@ require("@rails/activestorage").start();
 require("channels");
 require("packs/ads");
 import $ from 'jquery';
-import jquery from 'jquery';
 global.$ = jquery;
 require("trix")
 require("@rails/actiontext")

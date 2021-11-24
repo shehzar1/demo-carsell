@@ -18,6 +18,6 @@ class ChargesController < ApplicationController
   private
 
   def payment_params
-    params.permit(:stripeEmail, :stripeToken)
+    params.permit(:stripeEmail, :stripeToken, :authenticity_token, :stripeTokenType, :ad_id)
   end
 end

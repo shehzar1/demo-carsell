@@ -1,10 +1,14 @@
 class PaymentService
+  attr_accessor :email, :source
+
+  @error_message = ""
+
   def initialize(payment_params)
-    @email = payment_params[:stripeEmail]
-    @source = payment_params[:stripeToken]
-    @description = set_description
-    @amount = set_amount
-    @currency = set_currency
+    self.email = payment_params[:stripeEmail]
+    self.source = payment_params[:stripeToken]
+    @description = Ad::DESCRIPTION
+    @amount = Ad::AMOUNT
+    @currency = Ad::CURRENCY
   end
 
   def process
@@ -17,8 +21,8 @@ class PaymentService
 
   def create_customer
     @customer = Stripe::Customer.create(
-      email: @email,
-      source: @source
+      email: email,
+      source: source
     )
   end
 
@@ -28,26 +32,14 @@ class PaymentService
       amount: @amount,
       description: @description,
       currency: @currency
-      )
+    )
   end
 
   def failure_response(message)
-    error_message = message
+    @error_message = message
   end
 
   def success?
-    customer.present? && charge.present? && error_message.blank?
-  end
-
-  def set_amount
-    10000
-  end
-
-  def set_description
-    "Feature Ad"
-  end
-
-  def set_currency
-    "pkr"
+    @customer.present? && @charge.present? && @error_message.blank?
   end
 end
