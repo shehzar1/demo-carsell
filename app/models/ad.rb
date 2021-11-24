@@ -25,9 +25,7 @@ class Ad < ApplicationRecord
   def self.search(query_hash)
     scope = Ad.all
     if query_hash.present?
-      query_hash.each do |key, value|
-        scope = scope.search_ads(key, value) if (value.present?)
-      end
+      query_hash.each do |key, value| scope = scope.search_ads(key, value) if (value.present?) end
     end
     scope
   end
