@@ -5,7 +5,12 @@ class Ad < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
 
-  pg_search_scope :search_ads, against: [:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description]
+  pg_search_scope :search_ads, lambda { |key, query| [:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description].include?(key)
+    {
+      against: key,
+      query: query
+    }
+  }
 
   CITIES = ['Rawalpindi', 'Lahore', 'Quetta', 'Karachi', 'Peshawar', 'Islamabad'].freeze
   MAKE = ['Suzuki', 'Toyota', 'Honda', 'BMW'].freeze
@@ -18,9 +23,8 @@ class Ad < ApplicationRecord
 
   def self.search(query_hash)
     scope = Ad.all
-    if query_hash.present?
-      query_hash.each do |key, value| scope = scope.search_ads(key, value) if (value.present?) end
-    end
+    query_hash.compact_blank.each { |key, value| scope = scope.search_ads(key, value) } if query_hash.present?
+
     scope
   end
 end

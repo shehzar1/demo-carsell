@@ -43,9 +43,7 @@ class AdsController < ApplicationController
 
   def favorites
     if user_signed_in?
-      fav = Favorite.new()
-      fav.user_id = current_user.id
-      fav.ad_id = params[:id]
+      fav = Favorite.new(user_id: current_user.id, ad_id: params[:id])
       if fav.save
         flash[:notice] = "Ad added to Favorites"
       else
@@ -70,14 +68,12 @@ class AdsController < ApplicationController
 
   def myfavorites
     @ads = Array.new()
-    current_user.favorites.each do |f|
-      @ads << f.ad
-    end
+    current_user.favorites.each do |f| @ads << f.ad end
     @pagy, @ads = pagy_array(@ads, items: Ad::PER_PAGE_COUNT)
   end
 
   def myposts
-    @ads = Ad.all.where(user_id: current_user)
+    @ads = Ad.where(user_id: current_user)
     @pagy, @ads = pagy(@ads, items: Ad::PER_PAGE_COUNT)
   end
 
