@@ -21,4 +21,3 @@ $(document).on('turbolinks:load', function() {
     $temp.remove();
   });
 });
-

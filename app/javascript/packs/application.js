@@ -13,8 +13,3 @@ import $ from 'jquery';
 global.$ = jquery;
 require("trix")
 require("@rails/actiontext")
-
-
-
-
-
