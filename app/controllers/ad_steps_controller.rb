@@ -1,7 +1,7 @@
 class AdStepsController < ApplicationController
   include Wicked::Wizard
 
-  before_action :current_ad, only: %i[show update]
+  before_action :set_ad, only: %i[show update]
 
   steps :image_step, :phone_step
 
@@ -17,7 +17,7 @@ class AdStepsController < ApplicationController
     end
   end
 
-  def current_ad
+  def set_ad
     @ad = Ad.find(params[:ad_id])
   end
 
