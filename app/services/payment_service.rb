@@ -4,9 +4,6 @@ class PaymentService
   def initialize(payment_params)
     self.email = payment_params[:stripeEmail]
     self.source = payment_params[:stripeToken]
-    @description = Ad::DESCRIPTION
-    @amount = Ad::AMOUNT
-    @currency = Ad::CURRENCY
   end
 
   def process
@@ -26,10 +23,10 @@ class PaymentService
 
   def create_charge
     charge = Stripe::Charge.create(
-      customer: @customer.id,
-      amount: @amount,
-      description: @description,
-      currency: @currency
+      customer: customer.id,
+      amount: Ad::AMOUNT,
+      description: Ad::DESCRIPTION,
+      currency: Ad::CURRENCY
     )
   end
 
