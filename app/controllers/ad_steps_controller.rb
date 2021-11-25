@@ -1,19 +1,27 @@
 class AdStepsController < ApplicationController
   include Wicked::Wizard
+
+  before_action :set_ad, only: %i[show update]
+
   steps :image_step, :phone_step
 
   def show
-    @ad = Ad.find(params[:ad])
     render_wizard
   end
 
   def update
-    @ad = Ad.find(params[:ad_id])
-    if ((params[:ad]).present?)
-      @ad.images.attach(params[:ad][:images])
+    if @ad.images.attach(ad_images_params[:images])
+      render_wizard(@ad, {}, ad_id: @ad)
+    else
+      redirect_to ad_steps_url(:image_step, ad_id: @ad.id), alert: @ad.errors.full_messages.to_sentence
     end
-    render_wizard(@ad,{},ad: @ad)
   end
 
-end
+  def set_ad
+    @ad = Ad.find(params[:ad_id])
+  end
 
+  def ad_images_params
+    params.require(:ad).permit(images: [])
+  end
+end

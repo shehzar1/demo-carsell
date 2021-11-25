@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'favorites'
     end
   end
+
   resources :ad_steps
   get 'home/index'
 end
