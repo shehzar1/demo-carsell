@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_ad
+  before_action :current_ad, only: %i[create]
 
   def new; end
 
