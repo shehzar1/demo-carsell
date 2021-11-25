@@ -2,8 +2,8 @@ class PaymentService
   attr_accessor :email, :source, :charge, :customer, :error_message
 
   def initialize(payment_params)
-    self.email = payment_params[:stripeEmail]
-    self.source = payment_params[:stripeToken]
+    email = payment_params[:stripeEmail]
+    source = payment_params[:stripeToken]
   end
 
   def process
