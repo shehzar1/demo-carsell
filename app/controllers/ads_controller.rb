@@ -45,7 +45,7 @@ class AdsController < ApplicationController
   def favorites
     redirect_to new_user_registration_path, notice: "Please login first" unless user_signed_in?
 
-    if Ad.favorite(current_user, params[:id])
+    if @ad.favorite(current_user, params[:id])
       flash[:notice] = "Ad added to Favorites"
     else
       flash[:alert] = @ad.errors.full_messages.to_sentence
@@ -66,7 +66,7 @@ class AdsController < ApplicationController
 
 
   def myfavorites
-      @ads = Array.new()
+     @ads = Array.new()
      current_user.favorites.each do |f| @ads << f.ad end
      @pagy, @ads = pagy_array(@ads, items: Ad::PER_PAGE_COUNT)
   end

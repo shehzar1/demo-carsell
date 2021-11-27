@@ -22,12 +22,12 @@
             <button type="button" class="btn btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">View Phone Information</button>
             <button type="button" class="btn btn-outline-info mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Send Message</button>
             <% if @ad.images.attached? %>
-              <div class=”carousel-inner”>
-              <%@ad.images.each_with_index do |pic,i|%>
-                <div class="carousel-item <%= "active " if i.zero? %>">
+              <div class="carousel-inner">
+              <% @ad.images.each_with_index do |pic,i| %>
+                <div class="carousel-item <%= "active" if i.zero? %>">
                  <%= image_tag pic, class: "image_size" %>
                 </div>
-              <%end%>
+              <% end %>
               </div>
             <% end %>
           </div>

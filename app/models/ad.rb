@@ -30,7 +30,7 @@ class Ad < ApplicationRecord
     scope
   end
 
-  def self.favorite(current_user, ad)
-    fav = Favorite.new(user_id: current_user.id, ad_id: ad).save
+  def favorite
+    fav = Favorite.create(user_id: current_user.id, ad_id: ad)
   end
 end
