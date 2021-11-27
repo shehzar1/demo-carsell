@@ -1,9 +1,11 @@
 class Ad < ApplicationRecord
   include PgSearch::Model
 
-  has_many_attached :images
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
+  belongs_to :user
+  has_many_attached :images
+  has_rich_text :description
 
   pg_search_scope :search_ads, lambda { |key, query| [:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description].include?(key)
     {
@@ -26,5 +28,9 @@ class Ad < ApplicationRecord
     query_hash.compact_blank.each { |key, value| scope = scope.search_ads(key, value) } if query_hash.present?
 
     scope
+  end
+
+  def self.favorite(current_user, ad)
+    fav = Favorite.new(user_id: current_user.id, ad_id: ad).save
   end
 end

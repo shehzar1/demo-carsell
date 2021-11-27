@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_action :current_ad, only: %i[show edit update destroy close]
+  before_action :set_ad, only: %i[show edit update destroy close]
 
   def index
     @pagy, @ads = pagy(Ad.search(params[:search]), items: Ad::PER_PAGE_COUNT)
@@ -41,19 +41,17 @@ class AdsController < ApplicationController
     redirect_to ads_path
   end
 
-  def favorites
-    if user_signed_in?
-      fav = Favorite.new(user_id: current_user.id, ad_id: params[:id])
-      if fav.save
-        flash[:notice] = "Ad added to Favorites"
-      else
-        flash[:alert] = @ad.errors.full_messages.to_sentence
-      end
 
-      redirect_to ads_path
+  def favorites
+    redirect_to new_user_registration_path, notice: "Please login first" unless user_signed_in?
+
+    if Ad.favorite(current_user, params[:id])
+      flash[:notice] = "Ad added to Favorites"
     else
-      redirect_to new_user_registration_path, notice: "Please login first"
+      flash[:alert] = @ad.errors.full_messages.to_sentence
     end
+
+    redirect_to ads_path
   end
 
   def unfavorite
@@ -66,19 +64,22 @@ class AdsController < ApplicationController
     redirect_to myfavorites_ads_path
   end
 
+
   def myfavorites
-    @ads = Array.new()
-    current_user.favorites.each do |f| @ads << f.ad end
-    @pagy, @ads = pagy_array(@ads, items: Ad::PER_PAGE_COUNT)
+      @ads = Array.new()
+     current_user.favorites.each do |f| @ads << f.ad end
+     @pagy, @ads = pagy_array(@ads, items: Ad::PER_PAGE_COUNT)
   end
 
   def myposts
+    redirect_to new_user_registration_path, notice: "Please login first" unless user_signed_in?
+
     @ads = Ad.where(user_id: current_user)
     @pagy, @ads = pagy(@ads, items: Ad::PER_PAGE_COUNT)
   end
 
   def close
-    if @ad.update_attribute(:close_status, true)
+    if @ad.update(close_status: true)
       flash[:notice] = "Ad Closed successfully"
     else
       flash[:alert] = @ad.errors.full_messages.to_sentence
@@ -89,7 +90,7 @@ class AdsController < ApplicationController
 
   private
 
-  def current_ad
+  def set_ad
     @ad = Ad.find(params[:id])
   end
 

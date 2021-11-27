@@ -24,7 +24,7 @@
             <% if @ad.images.attached? %>
               <div class=”carousel-inner”>
               <%@ad.images.each_with_index do |pic,i|%>
-                <div class="carousel-item <%= "active " if i==0 %>">
+                <div class="carousel-item <%= "active " if i.zero? %>">
                  <%= image_tag pic, class: "image_size" %>
                 </div>
               <%end%>
@@ -63,11 +63,11 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id=Modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Contact Information</h5>
+        <h5 class="modal-title" id="Label">Contact Information</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

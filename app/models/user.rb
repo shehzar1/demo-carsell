@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_many :favorites
-  has_many :ads, through: :favorites
+  has_many :ads, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_ads, through: :favourites, source: :ad
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

@@ -3,12 +3,11 @@
     <button type="button" class="btn btn-success btn-lg mt-4">Add Car Information</button>
   </div>
   <div class="progress mt-4 mb-4">
-    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Step2
-    </div>
+    <div class="progress-bar progress-bar-striped bg-success bar2">Step2</div>
   </div>
   <div class="card text-center">
     <h3>Add Images</h3>
-    <%= form_for @ad, method: :put, url: ad_step_path do |f| %>
+    <%= form_for @ad, url: ad_step_path do |f| %>
       <%= hidden_field_tag :ad_id, @ad.id %>
       <%= f.file_field :images, multiple: true, direct_upload: true, accept:'image/*', class: "btn btn-outline-success mt-5" %>
       <%= f.submit "Add Images", class: "btn btn-primary mt-5 mb-5" %>
