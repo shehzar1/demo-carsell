@@ -61,17 +61,18 @@ class AdsController < ApplicationController
       flash[:alert] = @ad.errors.full_messages.to_sentence
     end
 
-    redirect_to myfavorites_ads_path
+    redirect_to user_favorites_ads_path
   end
 
 
-  def myfavorites
+  def user_favorites
      @ads = Array.new()
      current_user.favorites.each do |f| @ads << f.ad end
      @pagy, @ads = pagy_array(@ads, items: Ad::PER_PAGE_COUNT)
+     # @pagy, @favourite_ads = pagy_array(current_user.favourite_ads, items: Ad::PER_PAGE_COUNT)
   end
 
-  def myposts
+  def user_ads
     redirect_to new_user_registration_path, notice: "Please login first" unless user_signed_in?
 
     @ads = Ad.where(user_id: current_user)
@@ -85,7 +86,7 @@ class AdsController < ApplicationController
       flash[:alert] = @ad.errors.full_messages.to_sentence
     end
 
-    redirect_to myposts_ads_path
+    redirect_to user_ads_ads_path
   end
 
   private

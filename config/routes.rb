@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       get :close
     end
     collection do
-      get :myfavorites
-      get :myposts
+      get :user_favorites
+      get :user_ads
     end
   end
 

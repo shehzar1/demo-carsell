@@ -21,8 +21,8 @@
           </tr>
         </thead>
         <tbody>
-          <% @ads.find_all do |ad| %>
-            <tr>
+          <% @ads.each do |ad| %>
+          <tr>
               <td><%= link_to ad.car_make, ad %></td>
               <td><%= ad.description %></td>
               <td><%= ad.city %></td>
