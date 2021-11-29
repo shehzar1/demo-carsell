@@ -15,7 +15,7 @@ class AdStepsController < ApplicationController
         if @ad.images.attach(ad_images_params[:images])
           render_wizard(@ad, {}, ad_id: @ad)
         else
-          redirect_to ad_steps_url(:image_step, ad_id: @ad.id), alert: @ad.errors.full_messages.to_sentence
+          redirect_to ad_steps_path(:image_step, ad_id: @ad.id), alert: @ad.errors.full_messages.to_sentence
         end
       when :phone_step
         @ad.update(ad_params)
@@ -30,7 +30,7 @@ class AdStepsController < ApplicationController
   def destroy
     @img = @ad.images.find(params[:picture])
     @img.purge
-    redirect_to ad_steps_url(:image_step, ad_id: @ad), alert: "Image deleted successfully"
+    redirect_to ad_steps_path(:image_step, ad_id: @ad), alert: "Image deleted successfully"
   end
 
   def set_ad

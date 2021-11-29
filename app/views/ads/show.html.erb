@@ -19,8 +19,8 @@
         <div class="card-body mb-5">
           <button id="btn" type="button" class="btn btn-light btn-sm">Copy Ad Link</button>
           <div class="center_div">
-            <button type="button" class="btn btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">View Phone Information</button>
-            <button type="button" class="btn btn-outline-info mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Send Message</button>
+            <button type="button" class="btn btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target="#Modal">View Phone Information</button>
+            <button type="button" class="btn btn-outline-info mb-4" data-bs-toggle="modal" data-bs-target="#Modal">Send Message</button>
           </div>
         </div>
       </div>
@@ -55,32 +55,32 @@
 </div>
 
 <center>
-<div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
-  <% if @ad.images.attached? %>
-    <div class=”carousel-inner”>
-      <%@ad.images.each_with_index do |pic,i|%>
-        <div class="carousel-item <%= "active " if i==0 %>">
-         <%= image_tag pic, class: "w-25"%>
-        </div>
-      <%end%>
-    </div>
-  <% end %>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+  <div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
+    <% if @ad.images.attached? %>
+      <div class="carousel-inner">
+        <%@ad.images.each_with_index do |pic,i|%>
+          <div class="carousel-item <%= "active " if i.zero? %>">
+           <%= image_tag pic, class: "w-25"%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </center>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="modal_label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Contact Information</h5>
+        <h5 class="modal-title" id="modal_label">Contact Information</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
