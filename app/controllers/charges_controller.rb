@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
       @featured_ad.update_attribute(:featured, true)
       redirect_to ad_step_path(:phone_step, @featured_ad.id)
     else
-      redirect_to new_charges_path, alert: payment.error_message
+      redirect_to new_charge_path, alert: payment.error_message
     end
   end
 

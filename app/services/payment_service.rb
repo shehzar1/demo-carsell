@@ -1,5 +1,5 @@
 class PaymentService
-  attr_accessor :email, :source, :charge, :customer, :error_message
+  attr_accessor :email, :source, :charge, :error_message
 
   def initialize(payment_params)
     email = payment_params[:stripeEmail]
@@ -15,7 +15,7 @@ class PaymentService
   end
 
   def create_customer
-    customer = Stripe::Customer.create(
+    @customer = Stripe::Customer.create(
       email: email,
       source: source
     )
@@ -23,7 +23,7 @@ class PaymentService
 
   def create_charge
     charge = Stripe::Charge.create(
-      customer: customer.id,
+      customer: @customer.id,
       amount: Ad::AMOUNT,
       description: Ad::DESCRIPTION,
       currency: Ad::CURRENCY
@@ -35,6 +35,6 @@ class PaymentService
   end
 
   def success?
-    customer.present? && charge.present? && error_message.blank?
+    @customer.present? && charge.present? && error_message.blank?
   end
 end
