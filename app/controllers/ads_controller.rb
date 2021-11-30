@@ -41,7 +41,6 @@ class AdsController < ApplicationController
     redirect_to ads_path
   end
 
-
   def favorites
     redirect_to new_user_registration_path, notice: "Please login first" unless user_signed_in?
 
