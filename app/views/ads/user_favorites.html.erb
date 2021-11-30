@@ -33,7 +33,7 @@
               <td><%= ad.color %></td>
               <td><%= ad.assembly_type %></td>
               <td><%= ad.transmission_type %></td>
-              <td><%= link_to 'Remove', unfavorite_ad_path(ad), class:"btn btn-outline-danger btn-sm" %></td>
+              <td><%= link_to 'Remove', favorite_url(id: ad), method: :delete, class:"btn btn-outline-danger btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>

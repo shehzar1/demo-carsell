@@ -29,12 +29,4 @@ class Ad < ApplicationRecord
 
     scope
   end
-
-  def self.favorite(current_user, ad)
-    Favorite.create(user_id: current_user.id, ad_id: ad)
-  end
-
-  def self.unfavorite(ad)
-    Favorite.where(ad_id: params[:id]).destroy_all
-  end
 end

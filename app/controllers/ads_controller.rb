@@ -41,32 +41,8 @@ class AdsController < ApplicationController
     redirect_to ads_path
   end
 
-  def favorites
-    redirect_to new_user_registration_path, notice: "Please login first" unless user_signed_in?
-
-    if Ad.favorite(current_user, params[:id])
-      flash[:notice] = "Ad added to Favorites"
-    else
-      flash[:alert] = @ad.errors.full_messages.to_sentence
-    end
-
-    redirect_to ads_path
-  end
-
-  def unfavorite
-    if Ad.unfavorite(params[:id])
-      flash[:notice] = "Ad removed from Favorites."
-    else
-      flash[:alert] = @ad.errors.full_messages.to_sentence
-    end
-
-    redirect_to user_favorites_ads_path
-  end
-
   def user_favorites
-    @ads = Array.new()
-    current_user.favorites.each do |f| @ads << f.ad end
-    @pagy, @ads = pagy_array(@ads, items: Ad::PER_PAGE_COUNT)
+    @pagy, @ads = pagy(current_user.favorite_ads, items: Ad::PER_PAGE_COUNT)
   end
 
   def user_ads
