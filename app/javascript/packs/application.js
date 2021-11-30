@@ -8,5 +8,8 @@ require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
+require("packs/ads");
 import $ from 'jquery';
-global.$ = jQuery;
+global.$ = jquery;
+require("trix")
+require("@rails/actiontext")

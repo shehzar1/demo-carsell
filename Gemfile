@@ -8,8 +8,10 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'pagy'
 gem 'wicked'
-
+gem 'stripe'
 gem 'pg_search'
+gem "font-awesome-rails"
+gem 'dotenv-rails', :groups => [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use mysql as the database for Active Record

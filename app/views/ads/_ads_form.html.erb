@@ -10,8 +10,9 @@
                 <%= form.select :city, Ad::CITIES %>
               </div>
               <div class="col-lg-5">
-                <%= form.label :query, "Color:" %>
+                <%= form.label :color, "Color:" %>
                 <%= form.select :color, Ad::COLOR %>
+                <%= form.text_field :color, class: "color_field", disabled: true, size: "0.1x1" %>
               </div>
             </div>
           </div>
@@ -61,7 +62,7 @@
           </div>
           <div class="col-lg-6">
             <%= form.label :query, "Description:" %>
-            <%= form.text_field :description, class: 'field_size_lg' %>
+            <%= form.rich_text_area :description %>
           </div>
         </div>
         <div class="d-grid gap-2">
