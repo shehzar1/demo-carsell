@@ -2,17 +2,7 @@ class AdsController < ApplicationController
   before_action :current_ad, only: %i[show edit update destroy close]
 
   def index
-    @pagy, @ads = pagy(Ad.where(close_status: false), items: Ad::PER_PAGE_COUNT)
-    @ads = @ads.all.search_ads(params[:city])if(params[:city].present?)
-    @ads = @ads.all.search_ads(params[:milage])if(params[:milage].present?)
-    @ads = @ads.all.search_ads(params[:car_make])if(params[:car_make].present?)
-    @ads = @ads.all.search_ads(params[:price])if(params[:price].present?)
-    @ads = @ads.all.search_ads(params[:engine_type])if(params[:engine_type].present?)
-    @ads = @ads.all.search_ads(params[:transmission_type])if(params[:transmission_type].present?)
-    @ads = @ads.all.search_ads(params[:engine_capacity])if(params[:engine_capacity].present?)
-    @ads = @ads.all.search_ads(params[:color])if(params[:color].present?)
-    @ads = @ads.all.search_ads(params[:assembly_type])if(params[:assembly_type].present?)
-    @ads = @ads.all.search_ads(params[:description])if(params[:description].present?)
+    @pagy, @ads = pagy(Ad.search(params[:search]), items: Ad::PER_PAGE_COUNT)
   end
 
   def show; end
@@ -25,7 +15,7 @@ class AdsController < ApplicationController
     @ad = Ad.create(ad_params)
     @ad.user_id = current_user.id
     if @ad.save
-      redirect_to ad_steps_url(:image_step, ad_id: @ad), notice: "Ad created successfully."
+      redirect_to ad_steps_url(:image_step, ad_id: @ad.id), notice: "Ad created successfully."
     else
       render 'new'
     end
@@ -100,8 +90,6 @@ class AdsController < ApplicationController
 
     redirect_to myposts_ads_path
   end
-
-  private
 
   def current_ad
     @ad = Ad.find(params[:id])

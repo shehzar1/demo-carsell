@@ -1,36 +1,31 @@
 <div class="container">
   <div class="progress mt-4">
-      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 66%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Step3
-      </div>
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 66%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Step3
     </div>
-  <div class="center_div">
-    <div class="card mt-5">
-      <div class="card-body">
+  </div>
+<div class="center_div">
+  <div class="card mt-5">
+    <div class="card-body">
       <h4 class="text-center mb-4">Add Contact Information</h4>
-
-      <%= form_for(@ad, method: :put, url: wizard_path) do |f| %>
-      <%= hidden_field_tag :ad_id, @ad.id %>
+      <%= form_for(@ad) do |f| %>
         <div class="field">
           <%= f.label :primary_contact, "Primary Contact" %>
-          <br />
-          <%= f.text_field :primary_contact, placeholder: "+923005001200", autofocus: true, required: true%>
+          <%= f.text_field :primary_contact, placeholder: "+923005001200", autofocus: true, class: "field_width" %>
         </div>
         <div class="field mt-4">
           <%= f.label :secondary_contact, "Secondary Contact" %>
-          <br />
-          <%= f.text_field :secondary_contact, placeholder: "+923005001200" %>
+          <%= f.text_field :secondary_contact, placeholder: "+923005001200", class: "field_width" %>
         </div>
         <div class="actions">
           <div class="container">
             <div class="col text-center">
-            <%= f.submit "Post Ad", data: { confirm: "Are you sure you want to Post this Ad?" }, class: "btn btn-success mt-4" %>
+              <%= f.submit "Post Ad", data: { confirm: "Are you sure you want to Post this Ad?" }, class: "btn btn-success mt-4" %>
             </div>
           </div>
         </div>
       <% end %>
       <div class="col text-center">
         <%= link_to_if(!@ad.featured, "Get Featured", new_charge_path(ad_id: @ad.id), class: "btn btn-warning mt-4" ) { link_to( "Ad Already Featured") } %>
-      </div>
       </div>
     </div>
   </div>

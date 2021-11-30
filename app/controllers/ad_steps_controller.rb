@@ -1,9 +1,11 @@
 class AdStepsController < ApplicationController
   include Wicked::Wizard
+
+  before_action :set_ad, only: %i[show update destroy]
+
   steps :image_step, :phone_step
 
   def show
-    @ad = Ad.find(params[:ad_id])
     render_wizard
   end
 
@@ -27,7 +29,6 @@ class AdStepsController < ApplicationController
   end
 
   def destroy
-    @ad = Ad.find(params[:ad_id])
     @img = @ad.images.find(params[:picture])
     @img.purge
     redirect_to ad_steps_url(:image_step, ad_id: @ad), alert: "Image deleted successfully"
@@ -38,5 +39,12 @@ class AdStepsController < ApplicationController
   def ad_params
     params.require(:ad).permit(:primary_contact, :secondary_contact)
   end
-end
 
+  def set_ad
+    @ad = Ad.find(params[:ad_id])
+  end
+
+  def ad_images_params
+    params.require(:ad).permit(images: [])
+  end
+end
