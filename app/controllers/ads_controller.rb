@@ -15,7 +15,7 @@ class AdsController < ApplicationController
     @ad = Ad.create(ad_params)
 
     if @ad.save
-      redirect_to @ad, notice: "Ad created successfully."
+      redirect_to ad_steps_url(:image_step, ad_id: @ad.id), notice: "Ad created successfully."
     else
       render 'new'
     end
@@ -45,8 +45,6 @@ class AdsController < ApplicationController
     @pagy, @ads = pagy(Ad.all, items: Ad::PER_PAGE_COUNT)
   end
 
-  private
-
   def current_ad
     @ad = Ad.find(params[:id])
   end
@@ -54,6 +52,6 @@ class AdsController < ApplicationController
   private
 
   def ad_params
-    params.require(:ad).permit(:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description)
+    params.require(:ad).permit(:city, :milage, :car_make, :price, :engine_type, :transmission_type, :engine_capacity, :color, :assembly_type, :description, :primary_contact, :secondary_contact, images: [])
   end
 end
