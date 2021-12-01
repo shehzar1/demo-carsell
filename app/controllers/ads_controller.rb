@@ -41,14 +41,6 @@ class AdsController < ApplicationController
     redirect_to ads_path
   end
 
-  def user_favorites
-    current_user.favorites
-  end
-
-  def user_ads
-    current_user.ads
-  end
-
   def close
     if @ad.update(close_status: true)
       flash[:notice] = "Ad Closed successfully"
