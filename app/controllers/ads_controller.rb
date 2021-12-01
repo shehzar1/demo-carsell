@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_action :current_ad, only: %i[show edit update destroy close]
+  before_action :set_ad, only: %i[show edit update destroy close]
 
   def index
     @pagy, @ads = pagy(Ad.search(params[:search]), items: Ad::PER_PAGE_COUNT)
@@ -41,57 +41,19 @@ class AdsController < ApplicationController
     redirect_to ads_path
   end
 
-  def favorites
-    if user_signed_in?
-      fav = Favorite.new()
-      fav.user_id = current_user.id
-      fav.ad_id = params[:id]
-      if fav.save
-        flash[:notice] = "Ad added to Favorites"
-      else
-        flash[:alert] = @ad.errors.full_messages.to_sentence
-      end
-
-      redirect_to ads_path
-    else
-      redirect_to new_user_registration_path, notice: "Please login first"
-    end
-  end
-
-  def unfavorite
-    if Favorite.where(ad_id: params[:id]).destroy_all
-      flash[:notice] = "Ad removed from Favorites."
-    else
-      flash[:alert] = @ad.errors.full_messages.to_sentence
-    end
-
-    redirect_to myfavorites_ads_path
-  end
-
-  def myfavorites
-    @ads = Array.new()
-    current_user.favorites.each do |f|
-      @ads << f.ad
-    end
-    @pagy, @ads = pagy_array(@ads, items: Ad::PER_PAGE_COUNT)
-  end
-
-  def myposts
-    @ads = Ad.all.where(user_id: current_user)
-    @pagy, @ads = pagy(@ads, items: Ad::PER_PAGE_COUNT)
-  end
-
   def close
-    if @ad.update_attribute(:close_status, true)
+    if @ad.update(close_status: true)
       flash[:notice] = "Ad Closed successfully"
     else
       flash[:alert] = @ad.errors.full_messages.to_sentence
     end
 
-    redirect_to myposts_ads_path
+    redirect_to user_ads_ads_path
   end
 
-  def current_ad
+  private
+
+  def set_ad
     @ad = Ad.find(params[:id])
   end
 

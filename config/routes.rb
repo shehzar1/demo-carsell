@@ -4,18 +4,17 @@ Rails.application.routes.draw do
 
   resources :ads do
     member do
-      get :favorites
-      get :unfavorite
       get :close
-    end
-    collection do
-      get :myfavorites
-      get :myposts
     end
   end
 
+  resources :charges, only: [:new, :create]
+
   resources :ad_steps
 
-  resources :charges, only: [:new, :create]
+  resources :favorites, only: [:create, :destroy]
+
+  get '/user/ads', to: 'user#ads'
+  get '/user/favorites', to: 'user#favorites'
   get 'home/index'
 end
