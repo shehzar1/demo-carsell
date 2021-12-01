@@ -19,8 +19,17 @@
         <div class="card-body mb-5">
           <button id="btn" type="button" class="btn btn-light btn-sm">Copy Ad Link</button>
           <div class="center_div">
-            <button type="button" class="btn btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target="#Modal">View Phone Information</button>
-            <button type="button" class="btn btn-outline-info mb-4" data-bs-toggle="modal" data-bs-target="#Modal">Send Message</button>
+            <button type="button" class="btn btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target="#modal">View Phone Information</button>
+            <button type="button" class="btn btn-outline-info mb-4" data-bs-toggle="modal" data-bs-target="#modal">Send Message</button>
+            <% if @ad.images.attached? %>
+              <div class="carousel-inner">
+              <% @ad.images.each_with_index do |pic, i| %>
+                <div class="carousel-item <%= "active" if i.zero? %>">
+                 <%= image_tag pic, class: "image_size" %>
+                </div>
+              <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -76,11 +85,11 @@
   </div>
 </center>
 
-<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="modal_label" aria-hidden="true">
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modal_label">Contact Information</h5>
+        <h5 class="modal-title" id="label">Contact Information</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

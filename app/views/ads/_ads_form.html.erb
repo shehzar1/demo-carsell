@@ -12,7 +12,7 @@
               <div class="col-lg-5">
                 <%= form.label :color, "Color:" %>
                 <%= form.select :color, Ad::COLOR %>
-                <%= form.text_field :color, class: "color_field d-none", size: "0.1x1" %>
+                <%= form.text_field :color, class: "color_field text_field_size", disabled: true %>
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@
               </div>
              <div class="col-lg-6">
                 <%= form.label :query, "Price:" %>
-                <%= form.text_field :price, size: "0.1x1" %>
+                <%= form.text_field :price, class: 'text_field_size' %>
               </div>
             </div>
           </div>
@@ -46,11 +46,11 @@
             <div class="row mt-4">
               <div class="col-lg-5">
                 <%= form.label :query, "Milage:" %>
-                <%= form.text_field :milage, size: "0.1x1" %>
+                <%= form.text_field :milage, class: 'text_field_size' %>
               </div>
               <div class="col-lg-6">
                 <%= form.label :query, "Engine Capacity:" %>
-                <%= form.text_field :engine_capacity, size: "0.1x1" %>
+                <%= form.text_field :engine_capacity, class: 'text_field_size' %>
               </div>
             </div>
           </div>

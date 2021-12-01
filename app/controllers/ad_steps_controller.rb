@@ -38,5 +38,12 @@ class AdStepsController < ApplicationController
   def ad_params
     params.require(:ad).permit(:primary_contact, :secondary_contact)
   end
-end
 
+  def set_ad
+    @ad = Ad.find(params[:ad_id])
+  end
+
+  def ad_images_params
+    params.require(:ad).permit(images: [])
+  end
+end
