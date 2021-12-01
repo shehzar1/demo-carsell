@@ -21,6 +21,9 @@ class Ad < ApplicationRecord
   COLOR = ['Black' ,'White', 'Other'].freeze
   PER_PAGE_COUNT = 4.freeze
   PHONE_REGEX = /^((\+92)?(0092)?(92)?(0)?)(3)([0-9]{9})/.freeze
+  AMOUNT = 10000.freeze
+  DESCRIPTION = 'Feature Ad'.freeze
+  CURRENCY = 'pkr'.freeze
 
   validates :images, length: { maximum: 5 , message: "cannot be more than 5 for an ad." }
   validates :city, inclusion: { in: CITIES, message: "%{value} is invalid" }
