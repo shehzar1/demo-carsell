@@ -1,0 +1,50 @@
+<div class="text-center mt-4">
+  <h1>My Ads</h1>
+</div>
+<div class="container-fluid">
+  <div class="container_white">
+    <table class="table table-striped table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Maker</th>
+          <th>Description</th>
+          <th>City</th>
+          <th>Price</th>
+          <th>Type</th>
+          <th>Capacity</th>
+          <th>Milage</th>
+          <th>Color</th>
+          <th>Assembly</th>
+          <th>Transmission</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ads.find_each do |ad| %>
+          <tr>
+            <td><%= link_to ad.car_make, ad %></td>
+            <td><%= ad.description %></td>
+            <td><%= ad.city %></td>
+            <td><%= ad.price %></td>
+            <td><%= ad.engine_type %></td>
+            <td><%= ad.engine_capacity %></td>
+            <td><%= ad.milage %></td>
+            <td><%= ad.color %></td>
+            <td><%= ad.assembly_type %></td>
+            <td><%= ad.transmission_type %></td>
+            <td>
+              <%= link_to 'Delete', ad, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
+              <%= link_to 'Details', ad, class:"btn btn-outline-success btn-sm" %>
+              <%= link_to 'Edit', edit_ad_path(ad), class:"btn btn-outline-warning btn-sm" %>
+              <%= link_to 'Close', close_ad_path(ad), class:"btn btn-outline-secondary btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="center_div mt-4">
+      <%= link_to 'Add a New Ad', new_ad_path, class:"btn btn-primary" %>
+    </div>
+    <%= pagy_bootstrap_nav(@pagy).html_safe %>
+  </div>
+</div>

@@ -42,14 +42,11 @@ class AdsController < ApplicationController
   end
 
   def user_favorites
-    @pagy, @ads = pagy(current_user.favorite_ads, items: Ad::PER_PAGE_COUNT)
+    current_user.favorites
   end
 
   def user_ads
-    redirect_to new_user_registration_path, notice: "Please login first" unless user_signed_in?
-
-    @ads = Ad.where(user_id: current_user)
-    @pagy, @ads = pagy(@ads, items: Ad::PER_PAGE_COUNT)
+    current_user.ads
   end
 
   def close

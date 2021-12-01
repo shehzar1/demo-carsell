@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   resources :ad_steps
 
   resources :favorites, only: [:create, :destroy]
+
+  get '/user/ads', to: 'user#ads'
+  get '/user/favorites', to: 'user#favorites'
   get 'home/index'
 end

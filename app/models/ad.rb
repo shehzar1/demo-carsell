@@ -29,4 +29,6 @@ class Ad < ApplicationRecord
 
     scope
   end
+
+
 end
