@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_115847) do
+ActiveRecord::Schema.define(version: 2021_11_20_194153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_115847) do
     t.string "secondary_contact"
     t.integer "user_id"
     t.boolean "close_status", default: false
+    t.boolean "featured"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -145,6 +156,13 @@ ActiveRecord::Schema.define(version: 2021_11_12_115847) do
     t.string "processor"
     t.string "event_type"
     t.jsonb "event"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_attachments", force: :cascade do |t|
+    t.integer "post_id"
+    t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

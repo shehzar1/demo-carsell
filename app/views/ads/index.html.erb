@@ -3,7 +3,7 @@
     <h1>Search Ads</h1>
   </div>
   <div class="container-fluid m-4">
-    <%= form_with(url: ads_path, method: :get) do |form| %>
+    <%= form_for('search', url: ads_path, method: :get) do |form| %>
       <div class="row">
         <div class="col-lg-6">
           <div class="row">
@@ -68,9 +68,8 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-success mt-4" id="hide">Show Less Options</button>
       <div class="d-grid gap-2">
-        <%= form.submit "Search", class: "btn btn-warning btn-block mt-5 me-5"%>
+        <%= form.submit "Search Ads", class: "btn btn-warning btn-block mt-5" %>
       </div>
     <% end %>
   </div>
@@ -109,7 +108,7 @@
             <td><%= ad.transmission_type %></td>
             <td>
               <%= link_to 'Details', ad, class:"btn btn-outline-success btn-sm fa fa-home" %>
-              <%= link_to 'Fav', favorites_path(ad_id: ad), method: :post, class:"btn btn-outline-danger btn-sm" %>
+              <%= link_to_if((Favorite.where("ad_id=#{ad.id}").exists?), "Already Fav"){ link_to( "Fav", favorites_path(ad_id: ad), class:"btn btn-outline-danger btn-sm")} %>
             </td>
           </tr>
           <% end %>

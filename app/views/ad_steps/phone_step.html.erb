@@ -9,11 +9,11 @@
         <%= form_for(@ad) do |f| %>
           <div class="field">
             <%= f.label :primary_contact, "Primary Contact" %>
-            <%= f.text_field :primary_contact, placeholder: "+923005001200", autofocus: true %>
+            <%= f.text_field :primary_contact, placeholder: "+923005001200", autofocus: true, class: "field_width" %>
           </div>
           <div class="field mt-4">
             <%= f.label :secondary_contact, "Secondary Contact" %>
-            <%= f.text_field :secondary_contact, placeholder: "+923005001200" %>
+            <%= f.text_field :secondary_contact, placeholder: "+923005001200", class: "field_width" %>
           </div>
           <div class="actions">
             <div class="container">
@@ -24,7 +24,7 @@
           </div>
         <% end %>
         <div class="col text-center">
-          <button class="btn btn-warning mt-4">Get Featured</button>
+          <%= link_to_if(!@ad.featured, "Get Featured", new_charge_path(ad_id: @ad.id), class: "btn btn-warning mt-4" ) { link_to("Ad Already Featured") } %>
         </div>
       </div>
     </div>

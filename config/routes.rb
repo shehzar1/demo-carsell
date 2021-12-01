@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :charges, only: [:new, :create]
+
   resources :ad_steps
 
   resources :favorites, only: [:create, :destroy]
