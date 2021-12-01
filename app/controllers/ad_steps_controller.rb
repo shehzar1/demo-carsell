@@ -1,5 +1,6 @@
 class AdStepsController < ApplicationController
   include Wicked::Wizard
+  include AdSteps
 
   before_action :set_ad, only: %i[show update destroy]
 
@@ -12,18 +13,9 @@ class AdStepsController < ApplicationController
   def update
     case step
       when :image_step
-        if @ad.images.attach(ad_images_params[:images])
-          render_wizard(@ad, {}, ad_id: @ad)
-        else
-          redirect_to ad_steps_path(:image_step, ad_id: @ad.id), alert: @ad.errors.full_messages.to_sentence
-        end
+        image_step(@ad, ad_images_params)
       when :phone_step
-        @ad.update(ad_params)
-        if (@ad.errors.any?)
-          flash[:alert] = @ad.errors.full_messages.to_sentence
-          render_wizard(@ad,{},ad_id: @ad) and return
-        end
-        redirect_to @ad
+        phone_step(@ad, ad_params)
     end
   end
 
