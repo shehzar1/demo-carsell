@@ -6,10 +6,6 @@ Rails.application.routes.draw do
     member do
       get :close
     end
-    collection do
-      get :user_favorites
-      get :user_ads
-    end
   end
 
   resources :ad_steps
