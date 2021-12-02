@@ -10,9 +10,12 @@
     <%= form_for(@ad, url: wizard_path) do |f| %>
       <%= hidden_field_tag :ad_id, @ad.id %>
       <%= f.file_field :images, multiple: true, direct_upload: true, accept:'image/*', class: "btn btn-outline-success mt-5" %>
-      <% @ad.images.each_with_index do |pic| if @ad.errors.blank? && @ad.images.attached? %>
-        <%= link_to 'X', ad_step_path(ad_id: @ad.id, picture: pic), method: :delete %>
-        <%= image_tag pic, class: "w-25" %><% end %>
+      <% if @ad.errors.blank? && @ad.images.attached? %>
+        <% @ad.images.each_with_index do |pic| %>
+          <%= link_to 'X', ad_step_path(ad_id: @ad.id, picture: pic), method: :delete %>
+          <%= image_tag pic, class: "w-25" %>
+          <% end %>
+        <% end %>
       <% end %>
       <%= f.submit "Add Images", class: "btn btn-primary mt-5 mb-5" %>
     <% end %>

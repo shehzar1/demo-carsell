@@ -3,6 +3,7 @@ class Ad < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
+  has_many :favorite_users, through: :favorites, source: :user
   belongs_to :user
   has_many_attached :images
   has_rich_text :description
