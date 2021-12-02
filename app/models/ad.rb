@@ -1,9 +1,6 @@
 class Ad < ApplicationRecord
   include PgSearch::Model
 
-  include Rails.application.routes.url_helpers
-  include ActionView::Helpers::UrlHelper
-
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
   has_many :favorite_users, through: :favorites, source: :user
@@ -48,12 +45,6 @@ class Ad < ApplicationRecord
     scope = scope.includes(:favorite_users, :images_attachments, :rich_text_description, :images_blobs)
 
     scope
-  end
-
-  def favorite_button(ad, user)
-    return 'Already Fav' if ad.favorite_by?(user)
-
-    link_to("Fav", favorites_path(ad_id: ad), class:"btn btn-outline-danger btn-sm")
   end
 
   def favorite_by?(current_user)

@@ -108,7 +108,7 @@
             <td><%= ad.transmission_type %></td>
             <td>
               <%= link_to 'Details', ad, class:"btn btn-outline-success btn-sm fa fa-home" %>
-              <%= ad.favorite_button(ad, current_user) %>
+              <%= favorite_button(ad, current_user) %>
             </td>
           </tr>
           <% end %>
