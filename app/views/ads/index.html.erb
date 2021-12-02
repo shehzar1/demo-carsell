@@ -109,8 +109,6 @@
             <td>
               <%= link_to 'Details', ad, class:"btn btn-outline-success btn-sm fa fa-home" %>
               <%= link_to_if(ad.favorite_by?(current_user), "Already Fav"){ link_to( "Fav", favorites_path(ad_id: ad), class:"btn btn-outline-danger btn-sm")} %>
-
-
             </td>
           </tr>
           <% end %>
