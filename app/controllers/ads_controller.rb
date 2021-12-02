@@ -48,7 +48,7 @@ class AdsController < ApplicationController
       flash[:alert] = @ad.errors.full_messages.to_sentence
     end
 
-    redirect_to user_ads_ads_path
+    redirect_to user_ads_path
   end
 
   private
