@@ -42,6 +42,7 @@ class Ad < ApplicationRecord
   def self.search(query_hash)
     scope = Ad.all
     query_hash.compact_blank.each { |key, value| scope = scope.search_ads(key, value) } if query_hash.present?
+    scope = scope.includes(:favorite_users, :images_attachments, :rich_text_description, :images_blobs)
 
     scope
   end
