@@ -5,7 +5,7 @@ module AdSteps
     return redirect_to @ad if @ad.update(ad_params)
 
     flash[:alert] = @ad.errors.full_messages.to_sentence
-    render_wizard(@ad,{},ad_id: @ad)
+    render_wizard(@ad, {}, ad_id: @ad)
   end
 
   def image_step(ad, ad_images_params)
