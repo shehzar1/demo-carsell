@@ -3,9 +3,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    byebug
-
-    favorite = current_user.favorite_users.build(ad_id: params[:ad_id])
+    favorite = current_user.favorites.build(ad_id: params[:ad_id])
     if favorite.save
       flash[:notice] = "Added to Favorites"
     else
