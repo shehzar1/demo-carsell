@@ -3,6 +3,7 @@ class Ad < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
+  has_many :favorite_users, through: :favorites, source: :user
   belongs_to :user
   has_many_attached :images
   has_rich_text :description
@@ -41,7 +42,12 @@ class Ad < ApplicationRecord
   def self.search(query_hash)
     scope = Ad.all
     query_hash.compact_blank.each { |key, value| scope = scope.search_ads(key, value) } if query_hash.present?
+    scope = scope.includes(:favorite_users, :images_attachments, :rich_text_description, :images_blobs)
 
     scope
+  end
+
+  def favorite_by?(user)
+    favorite_users.include?(user)
   end
 end

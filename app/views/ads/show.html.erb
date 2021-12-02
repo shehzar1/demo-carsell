@@ -64,21 +64,21 @@
 </div>
 
 <center>
-  <div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
+  <div id="indicator" class="carousel slide mt-5" data-bs-ride="carousel">
     <% if @ad.images.attached? %>
-      <div class=”carousel-inner”>
+      <div class="carousel-inner">
         <%@ad.images.each_with_index do |pic,i|%>
-          <div class="carousel-item <%= "active " if i==0 %>">
+          <div class="carousel-item <%= "active " if i.zero? %>">
            <%= image_tag pic, class: "w-25"%>
           </div>
-        <%end%>
+        <% end %>
       </div>
     <% end %>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#indicator" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#indicator" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
