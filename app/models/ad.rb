@@ -45,4 +45,8 @@ class Ad < ApplicationRecord
 
     scope
   end
+
+  def favorite_by?(current_user)
+    favorite_users.include?(current_user)
+  end
 end

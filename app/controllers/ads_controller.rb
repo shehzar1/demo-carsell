@@ -3,7 +3,7 @@ class AdsController < ApplicationController
 
   def index
     @pagy, @ads = pagy(Ad.search(params[:search]), items: Ad::PER_PAGE_COUNT)
-    @ads = @ads.includes(:favorites, users: :favorite_ads)
+    @ads = @ads.includes(:favorite_users, :images_attachments, :rich_text_description)
   end
 
   def show; end
