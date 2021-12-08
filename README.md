@@ -25,4 +25,6 @@ Technical framework behind this project is **Ruby on Rails** and for interface *
 
 1. Clone this repo in your local machine
 2. run `bundle install`
-3. run `rails server`
+3. run `rails db:create`
+4. run `rails db:migrate`
+5. run `rails server`
