@@ -21,15 +21,25 @@
           <div class="center_div">
             <button type="button" class="btn btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target="#modal">View Phone Information</button>
             <button type="button" class="btn btn-outline-info mb-4" data-bs-toggle="modal" data-bs-target="#modal">Send Message</button>
+          </div>
+          <div id="indicator" class="carousel slide mt-5" data-bs-ride="carousel">
             <% if @ad.images.attached? %>
               <div class="carousel-inner">
-              <% @ad.images.each_with_index do |pic, i| %>
-                <div class="carousel-item <%= "active" if i.zero? %>">
-                 <%= image_tag pic, class: "image_size" %>
-                </div>
-              <% end %>
+                <%@ad.images.each_with_index do |pic, i|%>
+                  <div class="carousel-item <%= "active " if i.zero? %>">
+                   <center><%= image_tag pic, class: 'w-25'%></center>
+                  </div>
+                <% end %>
               </div>
             <% end %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#indicator" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#indicator" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
       </div>
@@ -62,28 +72,6 @@
     </div>
   </div>
 </div>
-
-<center>
-  <div id="indicator" class="carousel slide mt-5" data-bs-ride="carousel">
-    <% if @ad.images.attached? %>
-      <div class="carousel-inner">
-        <%@ad.images.each_with_index do |pic,i|%>
-          <div class="carousel-item <%= "active " if i.zero? %>">
-           <%= image_tag pic, class: "w-25"%>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-    <button class="carousel-control-prev" type="button" data-bs-target="#indicator" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#indicator" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</center>
 
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="label" aria-hidden="true">
   <div class="modal-dialog">
