@@ -5,10 +5,10 @@ $(document).on('turbolinks:load', function() {
 
  $("#ad_color").change(function () {
    if ($(this).val() == 'Other') {
-     $('.color_field').removeAttr("disabled");
+     $('.color_field').removeClass('d-none');
      $('.color_field').focus();
    } else {
-     $('.color_field').attr("disabled", "disabled");
+     $('.color_field').addClass('d-none');
    }
  });
 

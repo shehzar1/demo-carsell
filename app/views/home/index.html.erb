@@ -1,27 +1,16 @@
-
-<script src="https://static.opentok.com/v2/js/opentok.js"></script>
-<script>
-
-var apiKey = '45828062';
-var sessionId = '1_MX40NTgyODA2Mn5-MTY0MDIwODMzMzIxOH5wQ0hXYVVkZytqTTJ4RHJmZWI1MndWN3d-UH4';
-var token = 'T1==cGFydG5lcl9pZD00NTgyODA2MiZzaWc9OTBiMjVkYjc3NWRmNWNlNmIzZWRlZGY2Y2RkNDk5YTBmNjU2ZTM2ZjpzZXNzaW9uX2lkPTFfTVg0ME5UZ3lPREEyTW41LU1UWTBNREl3T0RNek16SXhPSDV3UTBoWFlWVmtaeXRxVFRKNFJISm1aV0kxTW5kV04zZC1VSDQmY3JlYXRlX3RpbWU9MTY0MDIzNzI5NCZub25jZT0wLjQyNTczMDI2MjQ0MjE4OTcmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTY0MDMyMzY5NA==';
-
-
-// connect to session
-var session = OT.initSession(apiKey, sessionId);
-
-// create publisher
-var publisher = OT.initPublisher();
-session.connect(token, function(err) {
-   // publish publisher
-   session.publish(publisher);
-
-});
-
-// create subscriber
-session.on('streamCreated', function(event) {
-   session.subscribe(event.stream);
-});
-
-</script>
-
+<div class="Landing-page-heading">
+   <h1>Find the Best Car for you</h1>
+</div>
+<div class="hero">
+   <div class="highway"></div>
+   <div class="city"></div>
+   
+   <div class="car">
+         <img src="https://www.aartiinformatics.com/wp-content/uploads/2014/09/new-sports-car.png">
+   </div>
+  
+   <div class="wheel">
+         <img src="https://pngimg.com/uploads/car_wheel/car_wheel_PNG23306.png" class="back-wheel">
+         <img src="https://pngimg.com/uploads/car_wheel/car_wheel_PNG23306.png" class="front-wheel">
+   </div>
+</div>
