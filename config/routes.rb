@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get '/user/ads', to: 'user#ads'
   get '/user/favorites', to: 'user#favorites'
   get 'home/index'
+  get 'home/about'
 end
